@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Columbo.Minesweeper.Domain", "Columbo.Minesweeper.Domain\Columbo.Minesweeper.Domain.csproj", "{E97C1427-1500-4CD3-9C78-7A3D5FA0A27F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Columbo.Minesweeper.Ui.Web", "Columbo.Minesweeper.Ui.Web\Columbo.Minesweeper.Ui.Web.csproj", "{8CE780FA-FE7E-4A25-A616-BE34FC1E51FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Columbo.Minesweeper.Specs.Core", "Columbo.Minesweeper.Specs.Core\Columbo.Minesweeper.Specs.Core.csproj", "{4D78916F-022B-4948-BCAF-CFCCC4881B51}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Columbo.Minesweeper.Specs.Uat", "Columbo.Minesweeper.Specs.Uat\Columbo.Minesweeper.Specs.Uat.csproj", "{26FA8829-C770-4087-9D1F-AF8AAE0A436D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Specs", "Specs", "{FA09B79D-C47E-4CAA-B325-A98D34ED69AD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E97C1427-1500-4CD3-9C78-7A3D5FA0A27F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E97C1427-1500-4CD3-9C78-7A3D5FA0A27F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E97C1427-1500-4CD3-9C78-7A3D5FA0A27F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E97C1427-1500-4CD3-9C78-7A3D5FA0A27F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CE780FA-FE7E-4A25-A616-BE34FC1E51FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CE780FA-FE7E-4A25-A616-BE34FC1E51FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CE780FA-FE7E-4A25-A616-BE34FC1E51FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CE780FA-FE7E-4A25-A616-BE34FC1E51FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D78916F-022B-4948-BCAF-CFCCC4881B51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D78916F-022B-4948-BCAF-CFCCC4881B51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D78916F-022B-4948-BCAF-CFCCC4881B51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D78916F-022B-4948-BCAF-CFCCC4881B51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26FA8829-C770-4087-9D1F-AF8AAE0A436D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26FA8829-C770-4087-9D1F-AF8AAE0A436D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26FA8829-C770-4087-9D1F-AF8AAE0A436D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26FA8829-C770-4087-9D1F-AF8AAE0A436D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4D78916F-022B-4948-BCAF-CFCCC4881B51} = {FA09B79D-C47E-4CAA-B325-A98D34ED69AD}
+		{26FA8829-C770-4087-9D1F-AF8AAE0A436D} = {FA09B79D-C47E-4CAA-B325-A98D34ED69AD}
+	EndGlobalSection
+EndGlobal

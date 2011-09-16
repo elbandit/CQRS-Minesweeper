@@ -1,0 +1,27 @@
+﻿@model Columbo.Minesweeper.Domain.Presentation.Views.MinefieldModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        <table id="minefield">
+            @foreach (var row_of_tiles in Model.tiles){
+                foreach (var tile in row_of_tiles){
+                <tr>
+                    <td>@Html.ActionLink("_", "Reveal", new { col = 1, row = 2 })</td>
+                    <td>@Html.ActionLink("_", "Reveal", new { col = 1, row = 2 })</td>
+                    <td>@Html.ActionLink("_", "Reveal", new { col = 1, row = 2 })</td>
+                </tr>
+                }
+             }                        
+        </table>
+    </div>
+</body>
+</html>

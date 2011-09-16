@@ -1,0 +1,11 @@
+﻿@{
+    ViewBag.Title = "Welcome to Columbo's Minesweeper!";
+}
+
+<h2>Start A Game</h2>
+<p>
+    @using (Html.BeginForm("StartGame9x9", "Home"))
+    {                        
+        <input id="btnStartGame9x9" type="submit" value="Start Game with a minefiels of 9 x 9" />
+    }    
+</p>
