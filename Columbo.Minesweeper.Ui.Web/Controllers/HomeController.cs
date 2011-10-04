@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Columbo.Minesweeper.Domain;
+using Columbo.Minesweeper.Application;
+using Columbo.Minesweeper.Application.Commands;
 
 namespace Columbo.Minesweeper.Ui.Web.Controllers
 {

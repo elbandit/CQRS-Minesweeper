@@ -5,6 +5,7 @@ using System.Text;
 using TechTalk.SpecFlow;
 using NUnit.Framework;
 using Columbo.Minesweeper.Specs.Uat.PageObjects;
+using Coypu;
 
 namespace Columbo.Minesweeper.Specs.Uat.Steps
 {
@@ -23,13 +24,17 @@ namespace Columbo.Minesweeper.Specs.Uat.Steps
             ScenarioContext.Current.Pending();
         }
 
-        [Then(@"I should see a minefield 9 x 9 full of tiles")]
+        [Then(@"I should see a minefield 3 x 3 full of tiles all unrevealed")]
         public void ThenIShouldSeeAMinefieldFullOfTiles()
         {
-            Assert.That(GamePlayPage.no_of_tiles(), Is.EqualTo(9)); 
+            Assert.That(GamePlayPage.no_of_tiles(), Is.EqualTo(9));
+
+            var tiles = GamePlayPage.get_all_tiles();
+            foreach (var tile in tiles)
+                Assert.That(tile.is_unrevealed(), Is.True); 
         }        
 
-        [When(@"click start a new game with a minefield size of 9 x 9")]
+        [When(@"click start a new game with a minefield size of 3 x 3")]
         public void WhenClickStartANewGame()
         {
             StartPage.start_game_with_minefield_of_9x9();
@@ -56,13 +61,15 @@ namespace Columbo.Minesweeper.Specs.Uat.Steps
         [Then(@"all the tiles should be revealed")]
         public void ThenAllTheTilesShouldBeRevealed()
         {
-            ScenarioContext.Current.Pending();
+            var tiles = GamePlayPage.get_all_tiles();
+            foreach( var tile in tiles)
+                Assert.That(tile.is_empty(), Is.True); 
         }
 
-        [When(@"I click on the tile at coordinate 3,3")]
-        public void WhenIClickOnTheTileAtCoordinate33()
+        [When(@"I click on the tile at coordinate (.*),(.*)")]
+        public void WhenIClickOnTheTileAtCoordinate(int col, int row)
         {
-            GamePlayPage.click_tile_at(0, 0);
+            GamePlayPage.click_tile_at(col, row);
         }
     }
 }

@@ -1,0 +1,61 @@
+    public class Minefield
+    { 
+        public void Minefield(MinePlanter mine_planter)
+        {
+
+        }
+
+        public void uncover_tile_at(Coordinate coordinate)
+        { 
+            tile.reveal(); 
+
+            if (tile.contains_mine())
+            { 
+                //tile.explode_mine(); doesn't make sense for all tiles
+                mine_exploded(); 
+                mark_explosion_at(tile);
+                // minefield has to fire event as we can't handle all tile events
+            }
+            else
+            {
+                mark_mines_surrounding(tile);
+            }
+        } 
+
+        public event MineExplodedHandler mine_exploded;
+    }
+
+    public class Minesweeper : Game
+    {
+        private Minefield _ minefield;
+
+        public void Minesweeper(Minefield minefield)
+        {
+            _minefield.mine_exploded += on_mine_exploded(); 
+        }
+
+        public void uncover_tile_at(coordinate)
+        {
+            // make sure that we haven't already flagged/revealed it
+        }
+
+        public void flag_mine_at(coordinate)
+        {
+            // do we have enough flags left
+
+            // has the player marked all the mines?
+        }
+
+        public void unflag_mine_at(coordinate)
+        {
+            // 
+        }
+
+        private void on_mine_exploded()
+        {
+            // game over
+            _minefield.reveal_all_mines();
+
+            // raise domain event for the game history aggregate
+        }
+    }

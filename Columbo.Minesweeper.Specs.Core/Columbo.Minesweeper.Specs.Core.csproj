@@ -70,6 +70,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain_Specs\MinefieldSpecs.cs" />
+    <Compile Include="Domain_Specs\when_handling_a_create_new_game_command.cs" />
+    <Compile Include="Domain_Specs\when_handling_a_reveal_a_tile_command.cs" />
+    <Compile Include="Domain_Specs\when_revealing_a_tile.cs" />
+    <Compile Include="Domain_Specs\when_revealing_a_tile_on_a_minefield.cs" />
+    <Compile Include="Presentation_Specs\When_displaying_the_game.cs" />
+    <Compile Include="Presentation_Specs\When_revealing_a_tile_on_the_minefield.cs" />
     <Compile Include="Presentation_Specs\When_starting_a_new_game.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -78,9 +85,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Columbo.Minesweeper.Domain\Columbo.Minesweeper.Domain.csproj">
-      <Project>{E97C1427-1500-4CD3-9C78-7A3D5FA0A27F}</Project>
-      <Name>Columbo.Minesweeper.Domain</Name>
+    <ProjectReference Include="..\Columbo.Minesweeper.Application\Columbo.Minesweeper.Application.csproj">
+      <Project>{443E72F2-784B-4248-9F5A-413F24694C82}</Project>
+      <Name>Columbo.Minesweeper.Application</Name>
     </ProjectReference>
     <ProjectReference Include="..\Columbo.Minesweeper.Ui.Web\Columbo.Minesweeper.Ui.Web.csproj">
       <Project>{8CE780FA-FE7E-4A25-A616-BE34FC1E51FB}</Project>

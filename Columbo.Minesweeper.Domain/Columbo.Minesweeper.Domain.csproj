@@ -40,19 +40,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CreateGameCommand.cs" />
-    <Compile Include="IBus.cs" />
-    <Compile Include="ICommand.cs" />
-    <Compile Include="InProcessCommandBus.cs" />
+    <Compile Include="Commands\CreateNewGameHandler.cs" />
+    <Compile Include="Commands\CreateGameCommand.cs" />
+    <Compile Include="Commands\IBus.cs" />
+    <Compile Include="Commands\ICommand.cs" />
+    <Compile Include="Commands\ICommandHandler.cs" />
+    <Compile Include="Commands\InProcessCommandBus.cs" />
+    <Compile Include="Commands\RevealTileHandler.cs" />
+    <Compile Include="Model\Coordinate.cs" />
+    <Compile Include="Model\IGameCenter.cs" />
+    <Compile Include="Model\IGrid.cs" />
+    <Compile Include="Model\IMinefield.cs" />
+    <Compile Include="Model\IMinesweeper.cs" />
+    <Compile Include="Model\ITile.cs" />
+    <Compile Include="Model\Minefield.cs" />
+    <Compile Include="Model\Minesweeper.cs" />
     <Compile Include="Presentation\IPresenter.cs" />
     <Compile Include="Presentation\Presentation.cs" />
     <Compile Include="Presentation\Views\MinefieldModel.cs" />
     <Compile Include="Presentation\Views\TileModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Commands\RevealTileCommand.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

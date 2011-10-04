@@ -107,6 +107,8 @@
     <Content Include="Content\themes\base\jquery.ui.tabs.css" />
     <Content Include="Content\themes\base\jquery.ui.theme.css" />
     <Content Include="Global.asax" />
+    <Content Include="Images\EmptyTile.gif" />
+    <Content Include="Images\UnrevealedTile.gif" />
     <Content Include="Scripts\jquery-1.5.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.5.1.js" />
     <Content Include="Scripts\jquery-1.5.1.min.js" />
@@ -157,9 +159,9 @@
     <Content Include="Views\Game\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Columbo.Minesweeper.Domain\Columbo.Minesweeper.Domain.csproj">
-      <Project>{E97C1427-1500-4CD3-9C78-7A3D5FA0A27F}</Project>
-      <Name>Columbo.Minesweeper.Domain</Name>
+    <ProjectReference Include="..\Columbo.Minesweeper.Application\Columbo.Minesweeper.Application.csproj">
+      <Project>{443E72F2-784B-4248-9F5A-413F24694C82}</Project>
+      <Name>Columbo.Minesweeper.Application</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

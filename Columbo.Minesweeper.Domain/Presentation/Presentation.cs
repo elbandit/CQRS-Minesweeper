@@ -10,7 +10,15 @@ namespace Columbo.Minesweeper.Domain.Presentation
     {
         public MinefieldModel get_view_of_minefield()
         {
-            return new MinefieldModel();
+            var viewOfMinefield = new MinefieldModel();
+            var tiles = new List<IEnumerable<TileModel>>();
+            viewOfMinefield.tiles = tiles;
+
+            tiles.Add(new List<TileModel>(){new TileModel(), new TileModel(), new TileModel()});
+            tiles.Add(new List<TileModel>() { new TileModel(), new TileModel(), new TileModel() });
+            tiles.Add(new List<TileModel>() { new TileModel(), new TileModel(), new TileModel() });
+
+            return viewOfMinefield;
         }
     }
 }

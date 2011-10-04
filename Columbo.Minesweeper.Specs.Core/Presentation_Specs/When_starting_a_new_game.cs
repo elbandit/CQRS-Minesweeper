@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Columbo.Minesweeper.Application.Commands;
 using Machine.Specifications;
 using Columbo.Minesweeper.Ui.Web.Controllers;
 using System.Web.Mvc;
 using MvcContrib.TestHelper;
 using Rhino.Mocks;
-using Columbo.Minesweeper.Domain;
+using Columbo.Minesweeper.Application.Domain;
 using Machine.Fakes;
 
 namespace Columbo.Minesweeper.Specs.Core.Presentation_Specs

@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<buildInfo>
+  <projectName>RoundhousE</projectName>
+  <companyName>FerventCoder Software</companyName>
+  <versionMajor>0</versionMajor>
+  <versionMinor>7</versionMinor>
+  <versionPatch>0</versionPatch>
+  <buildNumber>0</buildNumber>
+  <revision>281</revision>
+  <version>0.7.0.281</version>
+  <repositoryPath>http://roundhouse.googlecode.com/svn</repositoryPath>
+  <microsoftNetFramework>net-3.5</microsoftNetFramework>
+  <msbuildConfiguration>Build</msbuildConfiguration>
+  <msbuildPlatform>Any CPU</msbuildPlatform>
+  <builtWith>UppercuT v. 1.0.5.0</builtWith>
+</buildInfo>

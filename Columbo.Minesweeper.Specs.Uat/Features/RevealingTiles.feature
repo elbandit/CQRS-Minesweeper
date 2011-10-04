@@ -4,11 +4,27 @@
 	I want to be able to click on a tile
 	and see how many mines surround that tile
 
-Scenario: Click a tile on a minefield that contains no mines
-	Given I have started a new game	with a minefield size of 9 x 9
-	And the minefield contains no mines
-	When I click on the tile at coordinate 3,3
-	Then all the tiles should be revealed
+Scenario: Click a tile on a minefield that contains one mine
+	Given I have started a new game	with a minefield size of 3 x 3
+	And the minefield contains the following mines: 
+		| Row | Column |
+		| 1   | 1      |
+	When I click on the tile at coordinate 0,0
+	Then the following tiles should be revealed:
+		| Row | Column |
+		| 0   | 0      |
+		| 0   | 1      |
+		| 0   | 2      |
+		| 1   | 0      |
+		| 1   | 2      |
+		| 2   | 0      |
+		| 2   | 1      |
+		| 2   | 2      |
+	And the following tiles should not be revealed:
+		| Row | Column |
+		| 1   | 1      |
+
+##Scenario: Show the number of mines next to a tile
 
 ##Scenario: Click a tile on a minefield that contains one mine
 ##	Given I have started a new game	

@@ -1,11 +1,18 @@
 ﻿using Columbo.Minesweeper.Specs.Uat.Utilities;
 using TechTalk.SpecFlow;
+using Coypu;
 
 namespace Columbo.Minesweeper.Specs.Uat.Events
 {
     [Binding]
     public class FeatureEvents
     {
+        [BeforeTestRun]
+        public static void BeforeTestRun()
+        {
+           
+        }
+
         [BeforeFeature]
         public static void BeforeFeature()
         {

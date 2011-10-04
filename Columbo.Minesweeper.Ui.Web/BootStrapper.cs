@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Columbo.Minesweeper.Application.Commands;
 using StructureMap;
 using StructureMap.Configuration.DSL;
-using Columbo.Minesweeper.Domain;
-using Columbo.Minesweeper.Domain.Presentation;
+using Columbo.Minesweeper.Application.Queries;
 
 namespace Columbo.Minesweeper.Ui.Web
 {

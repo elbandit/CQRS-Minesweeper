@@ -13,13 +13,12 @@
     <div>
         <table id="minefield">
             @foreach (var row_of_tiles in Model.tiles){
-                foreach (var tile in row_of_tiles){
                 <tr>
-                    <td>@Html.ActionLink("_", "Reveal", new { col = 1, row = 2 })</td>
-                    <td>@Html.ActionLink("_", "Reveal", new { col = 1, row = 2 })</td>
-                    <td>@Html.ActionLink("_", "Reveal", new { col = 1, row = 2 })</td>
-                </tr>
+                @foreach (var tile in row_of_tiles){                
+                    <td>
+                    <a href="@Url.Action("Reveal", new { col = 1, row = 2 })"><img border="0" id="UnrevealedTile" src="/Images/UnrevealedTile.gif" /></a></td>                
                 }
+                </tr>
              }                        
         </table>
     </div>
