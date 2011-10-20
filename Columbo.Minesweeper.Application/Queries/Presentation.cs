@@ -2,23 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Columbo.Minesweeper.Application.Infrastructure;
 using Columbo.Minesweeper.Application.Queries.Views;
+using NHibernate.Linq;
 
 namespace Columbo.Minesweeper.Application.Queries
 {
     public class Presenter : IPresenter
     {
-        public MinefieldModel get_view_of_minefield()
+        public MinefieldModel get_view_of_minefield_for(Guid game_id)
         {
-            var viewOfMinefield = new MinefieldModel();
-            var tiles = new List<IEnumerable<TileModel>>();
-            viewOfMinefield.tiles = tiles;
-
-            tiles.Add(new List<TileModel>(){new TileModel(), new TileModel(), new TileModel()});
-            tiles.Add(new List<TileModel>() { new TileModel(), new TileModel(), new TileModel() });
-            tiles.Add(new List<TileModel>() { new TileModel(), new TileModel(), new TileModel() });
-
-            return viewOfMinefield;
+            using (var session = SessionFactory.GetNewSession())
+            {
+                return session.Query<MinefieldModel>().Where(x => x.game_id == game_id).FirstOrDefault();
+            } 
         }
     }
 }

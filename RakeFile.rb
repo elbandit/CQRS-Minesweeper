@@ -4,7 +4,11 @@ require 'configatron'
 
 task :default => [:msbuild]
 
-task :tests => [:msbuild, :run_mspec]
+task :core_specs => [:msbuild, :run_mspec]
+
+task :uat_specs => [:msbuild, :uat, :specflow_report]
+
+task :run_migrations => [:migrations]
 
 desc "Building solution"
 msbuild do |msb|      
@@ -18,10 +22,11 @@ end
 desc "Database Migrations"
 task :migrations do
     	
-	connection_string = ".\\SQLEXPRESS"
-	sql_files_directory = "..\\..\\db"
+	##connection_string = ".\\SQLEXPRESS"
+	connection_string = "."
+	sql_files_directory = ".\\db"
 
-	sh "./Tools/RoundhousE.v0.7.0.281/rh.exe /d=newdb /s=" + connection_string + " /f=" + sql_files_directory	
+	sh "./Tools/RoundhousE.v0.7.0.281/rh.exe /d=Minesweeper /s=" + connection_string + " /f=" + sql_files_directory	
 end
 
 desc "Run Machine.Specifications"
@@ -33,6 +38,18 @@ mspec :run_mspec do |runner|
 	##runner.parameters = '--teamcity'
 end
 
+desc "NUnit Running UAT"
+nunit :uat do |nunit|
+	nunit.command = "./packages/NUnit.2.5.10.11092/tools/nunit-console.exe"
+	nunit.assemblies "./Columbo.Minesweeper.Specs.Uat/bin/Release/Columbo.Minesweeper.Specs.Uat.dll"
+end
+
+specflowreport :specflow_report do |sfr|
+  sfr.command = "./packages/SpecFlow.1.7.1/tools/specflow.exe"
+  sfr.projects "./Columbo.Minesweeper.Specs.Uat/Columbo.Minesweeper.Specs.Uat.csproj"
+  ##sfr.reports "nunitexecutionreport"
+  sfr.options "/out:specs.html"
+end
 
 desc 'Update assembly info'
 assemblyinfo :update_version do |asm|

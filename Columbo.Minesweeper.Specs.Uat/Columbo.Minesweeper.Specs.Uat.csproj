@@ -89,10 +89,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Events\FeatureEvents.cs" />
+    <Compile Include="Features\Losing.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Losing.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\MarkATileWithAFlag.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MarkATileWithAFlag.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\ResumingAGame.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResumingAGame.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\RevealingTiles.feature.cs">
       <AutoGen>True</AutoGen>
@@ -104,11 +114,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>StartingAGame.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\Winning.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Winning.feature</DependentUpon>
+    </Compile>
     <Compile Include="PageObjects\GamePlayPage.cs" />
     <Compile Include="PageObjects\StartPage.cs" />
     <Compile Include="PageObjects\TileCell.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Steps\GamePlaySteps.cs" />
+    <Compile Include="Steps\GameStateSetUp.cs" />
+    <Compile Include="Utilities\Database.cs" />
     <Compile Include="Utilities\WebBrowser.cs" />
     <Compile Include="Utilities\WebSiteFileLocation.cs" />
   </ItemGroup>
@@ -120,9 +137,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Features\Losing.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Losing.feature.cs</LastGenOutput>
+    </None>
     <None Include="Features\MarkATileWithAFlag.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>MarkATileWithAFlag.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\ResumingAGame.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>ResumingAGame.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\RevealingTiles.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
@@ -131,6 +156,10 @@
     <None Include="Features\StartingAGame.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>StartingAGame.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\Winning.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Winning.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
   </ItemGroup>

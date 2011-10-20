@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+    namespace="Columbo.Minesweeper.Application.Domain"
+        assembly="Columbo.Minesweeper.Application">
+
+  <class name="Tile" table="Minefields"  lazy="false" >
+
+	  <id name="_id" access="field" column="tile_id" type="int" unsaved-value="0">		  
+		  <generator class="identity"/>
+	  </id>
+	  
+	<component access="field" class="Coordinate" name="_located_at" lazy="false">
+		<property name="X" column="row"/>
+		<property name="Y" column="col"/>
+	</component>
+	  
+    <property access="field" name="_is_revealed" column="Is_Revealed"/>
+    <property access="field" name="_number_of_mines_surrounding" column="Number_Of_Mines_Surrounding"/>
+    <property access="field" name="_contains_mine" column="contains_mine"/>
+
+	<many-to-one access="field" name="_minesweeper"
+                 class="Minesweeper"
+                 column="game_id"
+                 not-null="true"/>
+	  
+  </class>
+                         
+</hibernate-mapping>

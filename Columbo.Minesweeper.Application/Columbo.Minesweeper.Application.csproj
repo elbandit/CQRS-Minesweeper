@@ -31,6 +31,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\packages\Iesi.Collections.3.2.0.4000\lib\Net35\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\packages\NHibernate.3.2.0.4000\lib\Net35\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap">
+      <HintPath>..\packages\structuremap.2.6.3\lib\StructureMap.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,13 +52,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\GameRepository.cs" />
+    <Compile Include="Commands\GameTypeMapper.cs" />
+    <Compile Include="Commands\ICommandHandlerRegistry.cs" />
+    <Compile Include="Commands\IGameRepository.cs" />
+    <Compile Include="Commands\StructureMapCommandHandlerRegistry.cs" />
+    <Compile Include="Domain\GameDifficulty.cs" />
+    <Compile Include="Domain\GameDifficultyFactory.cs" />
+    <Compile Include="Domain\GameType.cs" />
+    <Compile Include="Commands\IGameTypeMapper.cs" />
+    <Compile Include="Domain\GridFactory.cs" />
+    <Compile Include="Domain\IGridFactory.cs" />
+    <Compile Include="Domain\IMinePlanterFactory.cs" />
+    <Compile Include="Domain\ITileFactory.cs" />
+    <Compile Include="Domain\ITilePicker.cs" />
+    <Compile Include="Domain\MineExplodedEvent.cs" />
+    <Compile Include="Domain\MinefieldClearedEvent.cs" />
+    <Compile Include="Domain\MinefieldFactory.cs" />
+    <Compile Include="Domain\MinePlanterFactory.cs" />
+    <Compile Include="Domain\MinesweeperFactory.cs" />
+    <Compile Include="Commands\TransactionalHandler.cs" />
     <Compile Include="Domain\Coordinate.cs" />
-    <Compile Include="Domain\IGameCenter.cs" />
+    <Compile Include="Domain\Grid.cs" />
+    <Compile Include="Domain\IMinesweeperFactory.cs" />
     <Compile Include="Domain\IGrid.cs" />
     <Compile Include="Domain\IMinefield.cs" />
+    <Compile Include="Domain\IMinefieldFactory.cs" />
+    <Compile Include="Domain\IMinePlanter.cs" />
     <Compile Include="Domain\IMinesweeper.cs" />
     <Compile Include="Domain\ITile.cs" />
     <Compile Include="Domain\Minefield.cs" />
+    <Compile Include="Domain\MinePlanter.cs" />
     <Compile Include="Domain\Minesweeper.cs" />
     <Compile Include="Commands\CreateGameCommand.cs" />
     <Compile Include="Commands\CreateNewGameHandler.cs" />
@@ -56,11 +92,41 @@
     <Compile Include="Commands\InProcessCommandBus.cs" />
     <Compile Include="Commands\RevealTileCommand.cs" />
     <Compile Include="Commands\RevealTileHandler.cs" />
+    <Compile Include="Domain\RandomTilePicker.cs" />
+    <Compile Include="Domain\Tile.cs" />
+    <Compile Include="Domain\TileFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Infrastructure\SessionFactory.cs" />
     <Compile Include="Queries\IPresenter.cs" />
     <Compile Include="Queries\Presentation.cs" />
     <Compile Include="Queries\Views\MinefieldModel.cs" />
     <Compile Include="Queries\Views\TileModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Commands\Mapping\nhibernate-mapping.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Queries\Views\Mappings\nhibernate-mapping.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Queries\Views\Mappings\MinefieldModel.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Queries\Views\Mappings\TileModel.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Commands\Mapping\Minesweeper.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Commands\Infrastructure\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Commands\Mapping\Tile.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

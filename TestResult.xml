@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--This file represents the results of running a test suite-->
+<test-results name="C:\Projects\Minesweeper\Columbo.Minesweeper.Specs.Uat\bin\Release\Columbo.Minesweeper.Specs.Uat.dll" total="2" errors="0" failures="2" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2011-10-13" time="16:22:05">
+  <environment nunit-version="2.5.10.11092" clr-version="2.0.50727.4961" os-version="Microsoft Windows NT 6.1.7600.0" platform="Win32NT" cwd="C:\Projects\Minesweeper" machine-name="LO-LAPTOP-130" user="Scott" user-domain="WIGGLEDOMAIN" />
+  <culture-info current-culture="en-GB" current-uiculture="en-US" />
+  <test-suite type="Assembly" name="C:\Projects\Minesweeper\Columbo.Minesweeper.Specs.Uat\bin\Release\Columbo.Minesweeper.Specs.Uat.dll" executed="True" result="Failure" success="False" time="79.661" asserts="0">
+    <results>
+      <test-suite type="Namespace" name="Columbo" executed="True" result="Failure" success="False" time="79.647" asserts="0">
+        <results>
+          <test-suite type="Namespace" name="Minesweeper" executed="True" result="Failure" success="False" time="79.645" asserts="0">
+            <results>
+              <test-suite type="Namespace" name="Specs" executed="True" result="Failure" success="False" time="79.644" asserts="0">
+                <results>
+                  <test-suite type="Namespace" name="Uat" executed="True" result="Failure" success="False" time="79.644" asserts="0">
+                    <results>
+                      <test-suite type="Namespace" name="Features" executed="True" result="Failure" success="False" time="79.643" asserts="0">
+                        <results>
+                          <test-suite type="TestFixture" name="MarkingTilesWithFlagsFeature" description="Marking Tiles With Flags" executed="True" result="Inconclusive" success="False" time="7.792" asserts="0" />
+                          <test-suite type="TestFixture" name="RevealingTilesFeature" description="Revealing Tiles" executed="True" result="Failure" success="False" time="40.448" asserts="0">
+                            <results>
+                              <test-case name="Columbo.Minesweeper.Specs.Uat.Features.RevealingTilesFeature.ClickATileOnAMinefieldThatContainsOneMine" description="Click a tile on a minefield that contains one mine" executed="True" result="Failure" success="False" time="38.428" asserts="0">
+                                <failure>
+                                  <message><![CDATA[]]></message>
+                                  <stack-trace><![CDATA[at TechTalk.SpecFlow.Bindings.MethodBinding.InvokeAction(Object[] arguments, ITestTracer testTracer, TimeSpan& duration)
+at TechTalk.SpecFlow.TestRunner.ExecuteStep(StepArgs stepArgs)
+at TechTalk.SpecFlow.TestRunner.CollectScenarioErrors()
+]]></stack-trace>
+                                </failure>
+                              </test-case>
+                            </results>
+                          </test-suite>
+                          <test-suite type="TestFixture" name="StartingAGameFeature" description="Starting a game" executed="True" result="Failure" success="False" time="31.381" asserts="0">
+                            <results>
+                              <test-case name="Columbo.Minesweeper.Specs.Uat.Features.StartingAGameFeature.StartAGame" description="Start a game" executed="True" result="Failure" success="False" time="29.264" asserts="1">
+                                <failure>
+                                  <message><![CDATA[  Expected: True
+  But was:  False
+]]></message>
+                                  <stack-trace><![CDATA[at Columbo.Minesweeper.Specs.Uat.Steps.GamePlaySteps.ThenIShouldSeeAMinefieldFullOfTiles() in c:\Projects\Minesweeper\Columbo.Minesweeper.Specs.Uat\Steps\GamePlaySteps.cs:line 29
+at TechTalk.SpecFlow.Bindings.MethodBinding.InvokeAction(Object[] arguments, ITestTracer testTracer, TimeSpan& duration)
+at TechTalk.SpecFlow.TestRunner.ExecuteStep(StepArgs stepArgs)
+at TechTalk.SpecFlow.TestRunner.CollectScenarioErrors()
+]]></stack-trace>
+                                </failure>
+                              </test-case>
+                            </results>
+                          </test-suite>
+                        </results>
+                      </test-suite>
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

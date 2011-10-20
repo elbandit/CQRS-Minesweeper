@@ -2,6 +2,6 @@
 {
     public interface IBus
     {
-        void send(ICommand command);
+        void send<TCommand>(TCommand command) where TCommand : ICommand;
     }
 }

@@ -16,7 +16,8 @@ namespace Columbo.Minesweeper.Specs.Uat.Utilities
             {
                 if (!ScenarioContext.Current.ContainsKey("browser"))
                 {
-                    var ie = new IE(String.Format("http://localhost:{0}/", Port.ToString()));
+                    //var ie = new IE(String.Format("http://localhost:{0}/", Port.ToString()));
+                    var ie = new IE(String.Format("http://127.0.0.1:{0}/", Port.ToString()));                    
                     ie.ClearCache();
                     ie.ClearCookies();
                     ScenarioContext.Current["browser"] = ie;
@@ -33,14 +34,14 @@ namespace Columbo.Minesweeper.Specs.Uat.Utilities
 
         protected static Server WebServer { get; private set; }
 
-        public static void InitializeBrowser()
+        public static void initialise_local_Web_server()
         {
             WebServer = new Server(Port, "/", WebSiteFileLocation.get_physical_path());
 
             WebServer.Start();
         }
 
-        public static void ShutdownBrowser()
+        public static void stop_local_web_server()
         {
             WebServer.Stop();
         }

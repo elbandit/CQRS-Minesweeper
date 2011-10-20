@@ -4,8 +4,19 @@
 
 <h2>Start A Game</h2>
 <p>
-    @using (Html.BeginForm("StartGame9x9", "Home"))
+    @using (Html.BeginForm("StartGame", "Home", new { difficulty_name = "easy" }))
     {                        
-        <input id="btnStartGame9x9" type="submit" value="Start Game with a minefield of 3 x 3" />
-    }    
+        <input id="btnStartGame9x9" type="submit" value="minefield size of 9 x 9 (10 mines)" />
+    }
+        <br /><br />
+
+    @using (Html.BeginForm("StartGame", "Home", new { difficulty_name = "medium" }))
+    {                
+        <input id="btnStartGame16x16" type="submit" value="minefield size of 16 x 16 (40 mines)" />
+    }
+        <br /><br />
+    @using (Html.BeginForm("StartGame", "Home", new { difficulty_name = "hard" }))
+    {    
+       <input id="btnStartGame30x16" type="submit"  value="minefield size of 30 x 16 (99 mines)" />                
+    }
 </p>

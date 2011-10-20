@@ -8,6 +8,9 @@ namespace Columbo.Minesweeper.Application.Domain
 {
     public class Coordinate : IEquatable<Coordinate>
     {
+        private Coordinate ()
+        { }
+
         public Coordinate(int x, int y)
         {
             X = x;

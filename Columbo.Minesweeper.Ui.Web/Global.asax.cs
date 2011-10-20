@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Columbo.Minesweeper.Application.Infrastructure;
 using Columbo.Minesweeper.Ui.Web.Controllers;
 
 namespace Columbo.Minesweeper.Ui.Web
@@ -32,6 +33,10 @@ namespace Columbo.Minesweeper.Ui.Web
 
         protected void Application_Start()
         {
+            log4net.Config.XmlConfigurator.Configure();
+
+            SessionFactory.Init();
+
             ControllerBuilder.Current.SetControllerFactory(new ControllerFactory());
 
             BootStrapper.configure_dependencies();

@@ -3,17 +3,38 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Columbo.Minesweeper.Specs.Uat.Utilities;
+using Coypu;
+using OpenQA.Selenium.Remote;
+using OpenQA.Selenium;
 
 namespace Columbo.Minesweeper.Specs.Uat.PageObjects
 {
     public class StartPage
     {
-        public static void start_game_with_minefield_of_9x9()
+        public StartPage open()
         {
-            WebBrowser.Current.Button("btnStartGame9x9").Click();
+            Coypu.Browser.Session.Visit("http://localhost:59174");
+
+            return this;
         }
 
-        public static string title
+        public Guid get_player_identifier()
+        {
+            ICookieJar cookies = ((RemoteWebDriver)Browser.Session.Native).Manage().Cookies;
+
+            var game_id = new Guid(cookies.GetCookieNamed("player_id").Value);
+
+            return game_id;
+        }
+
+        public StartPage click_on_the_button_labelled(string button_label)
+        {            
+            Browser.Session.ClickButton(button_label);
+
+            return this;
+        }
+
+        public string title
         {
             get { return WebBrowser.Current.Title; }
         }

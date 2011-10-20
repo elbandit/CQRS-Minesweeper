@@ -3,17 +3,59 @@
 namespace Columbo.Minesweeper.Application.Domain
 {
     public class Minesweeper : IMinesweeper
-    {
+    {          
         private IMinefield _minefield;
+        private Guid _game_id;
+        private bool _game_ended_in_a_loss;
+        private bool _game_ended_in_a_win;
 
-        public Minesweeper(IMinefield minefield)
+        public Minesweeper()
         {
-            _minefield = minefield;
+            
+        }
+
+        public Minesweeper(IMinefieldFactory minefield_factory, GameOptions game_options)
+        {
+            _game_id = game_options.player_id;            
+            _minefield = minefield_factory.create_a_mindfield_with_these_options(game_options, this);            
+        }
+
+        public Guid game_id 
+        {
+            get { return _game_id; }
         }
 
         public void reveal_tile_at(Coordinate coordinate)
         {
+            listen_for_minefield_events();
+
             _minefield.reveal_tile_at(coordinate);
+        }
+
+        public bool is_game_won()
+        {
+            return _game_ended_in_a_win;
+        }
+
+        public bool is_game_lost()
+        {
+            return _game_ended_in_a_loss;
+        }
+
+        private void listen_for_minefield_events()
+        {
+            _minefield.mine_exploded += new EventHandler(game_lost);
+            _minefield.minefield_cleared += new EventHandler(game_won);
+        }
+
+        private void game_lost(object sender, EventArgs e)
+        {
+            _game_ended_in_a_loss = true;
+        }
+
+        void game_won(object sender, EventArgs e)
+        {
+            _game_ended_in_a_win = true;
         }
     }
 }
