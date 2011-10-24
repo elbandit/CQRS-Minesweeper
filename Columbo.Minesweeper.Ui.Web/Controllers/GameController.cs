@@ -31,6 +31,15 @@ namespace Columbo.Minesweeper.Ui.Web.Controllers
             return View(minefield_model);
         }
 
+        public ActionResult FinishGame()
+        {
+            var finish_command = new FinishGameCommand();
+            finish_command.player_id = _player_identifier.get_player_identifier();
+            _bus.send(finish_command);
+
+            return RedirectToAction("Index", "Home");
+        }
+
         public ActionResult Reveal(int col, int row)
         {
             var reveal_tile_command = new RevealTileCommand();            

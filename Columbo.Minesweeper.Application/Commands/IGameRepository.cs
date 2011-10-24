@@ -12,6 +12,8 @@ namespace Columbo.Minesweeper.Application.Commands
 
         void add(IMinesweeper minesweeper);
 
+        void delete(IMinesweeper minesweeper);
+
         IMinesweeper get_by(Guid game_id);
     }
 }

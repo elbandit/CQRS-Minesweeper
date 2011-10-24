@@ -31,6 +31,13 @@ namespace Columbo.Minesweeper.Application.Commands
             } 
         }
 
+        public void delete(IMinesweeper minesweeper)
+        {
+            using (var session = SessionFactory.GetNewSession())
+            {
+                session.Delete(minesweeper);
+            } 
+        }
 
         public void add(IMinesweeper minesweeper)
         {

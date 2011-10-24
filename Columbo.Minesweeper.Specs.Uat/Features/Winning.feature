@@ -24,4 +24,4 @@ Scenario: Reveal all tiles that aren't mines and win the game
 		| Row | Column |		
 		| 2   | 2      | 
 	And I should see a message telling me that "You have won!"
-	And I should be asked whether I would like to start a new game	
+	And I should see a button labelled "Start New Game"	

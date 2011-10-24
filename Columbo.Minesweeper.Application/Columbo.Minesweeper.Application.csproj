@@ -52,6 +52,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\FinishGameCommand.cs" />
+    <Compile Include="Commands\FinishGameCommandHandler.cs" />
     <Compile Include="Commands\GameRepository.cs" />
     <Compile Include="Commands\GameTypeMapper.cs" />
     <Compile Include="Commands\ICommandHandlerRegistry.cs" />

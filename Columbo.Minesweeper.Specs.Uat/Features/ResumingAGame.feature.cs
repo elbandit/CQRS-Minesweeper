@@ -78,8 +78,8 @@ this.ScenarioSetup(scenarioInfo);
                         "Row",
                         "Column"});
             table1.AddRow(new string[] {
-                        "2",
-                        "2"});
+                        "0",
+                        "1"});
 #line 8
  testRunner.And("the minefield contains the following mines:", ((string)(null)), table1);
 #line 11
@@ -94,7 +94,7 @@ this.ScenarioSetup(scenarioInfo);
             table2.AddRow(new string[] {
                         "0",
                         "0",
-                        "0"});
+                        "1"});
 #line 13
  testRunner.Then("the following tiles should be revealed:", ((string)(null)), table2);
 #line 16
@@ -111,7 +111,7 @@ this.ScenarioSetup(scenarioInfo);
             table3.AddRow(new string[] {
                         "0",
                         "0",
-                        "0"});
+                        "1"});
 #line 19
  testRunner.Then("the following tiles should be revealed:", ((string)(null)), table3);
 #line hidden
@@ -132,8 +132,8 @@ this.ScenarioSetup(scenarioInfo);
                         "Row",
                         "Column"});
             table4.AddRow(new string[] {
-                        "2",
-                        "2"});
+                        "0",
+                        "1"});
 #line 25
  testRunner.And("the minefield contains the following mines:", ((string)(null)), table4);
 #line 28
@@ -148,16 +148,14 @@ this.ScenarioSetup(scenarioInfo);
             table5.AddRow(new string[] {
                         "0",
                         "0",
-                        "0"});
+                        "1"});
 #line 30
  testRunner.Then("the following tiles should be revealed:", ((string)(null)), table5);
 #line 33
  testRunner.When("I return to the home page");
 #line 34
- testRunner.Then("I should see an option to start a new game");
-#line 35
  testRunner.When("I click \"minefield size of 16 x 16 (40 mines)\"");
-#line 36
+#line 35
  testRunner.Then("I should see a minefield containing \"16\" x \"16\" mines all unrevealed");
 #line hidden
             this.ScenarioCleanup();

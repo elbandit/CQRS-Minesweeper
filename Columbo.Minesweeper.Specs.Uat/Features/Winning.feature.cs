@@ -137,7 +137,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 26
  testRunner.And("I should see a message telling me that \"You have won!\"");
 #line 27
- testRunner.And("I should be asked whether I would like to start a new game");
+ testRunner.And("I should see a button labelled \"Start New Game\"");
 #line hidden
             this.ScenarioCleanup();
         }

@@ -11,4 +11,4 @@ Scenario: Reveal all tiles that aren't mines and win the game
 	When I navigate to the game play page
 	And I click on the tile at coordinate 2,2	
 	Then I should see a message telling me that "You have lost!"
-	And I should be asked whether I would like to start a new game	
+	And I should see a button labelled "Start New Game"

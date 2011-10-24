@@ -109,31 +109,31 @@ namespace Columbo.Minesweeper.Specs.Uat.Steps
         [Then(@"I should see an option to resume my game")]
         public void ThenIShouldSeeAnOptionToResumeMyGame()
         {
-            ScenarioContext.Current.Pending();
+            Assert.That(new GamePlayPage().resume_game_button_showing(), Is.True);
         }
 
         [When(@"I click resume")]
         public void WhenIClickResume()
         {
-            ScenarioContext.Current.Pending();
+            new GamePlayPage().click_resume_game_button();
         }
 
         [When(@"I return to the home page")]
         public void WhenIReturnToTheHomePage()
         {
-            ScenarioContext.Current.Pending();
+            new GamePlayPage().return_to_start_page();
         }
 
         [When(@"I click ""(.*)""")]
-        public void WhenIClickMinefieldSizeOf16X1640Mines()
+        public void WhenIClickOnTheButton(string button_text)
         {
-            ScenarioContext.Current.Pending();
+            new StartPage().click_on_the_button_labelled(button_text);
         }
 
-        [Then(@"I should see an option to start a new game")]
-        public void ThenIShouldSeeAnOptionToStartANewGame()
+        [Then(@"I should see a button labelled ""(.*)""")]
+        public void ThenIShouldSeeAButtonLabelled(string button_label)
         {
-            ScenarioContext.Current.Pending();
+            Assert.That(new GamePlayPage().contains_a_button_with_a_label_of(button_label), Is.True);
         }
     }
 }

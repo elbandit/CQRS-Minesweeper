@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Columbo.Minesweeper.Specs.Uat.Utilities;
-using Coypu;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
+using WatiN.Core;
+using Browser = Coypu.Browser;
 
 namespace Columbo.Minesweeper.Specs.Uat.PageObjects
 {
@@ -18,6 +19,21 @@ namespace Columbo.Minesweeper.Specs.Uat.PageObjects
             Coypu.Browser.Session.Visit("http://localhost:59174/Game");
 
             return this;
+        }
+
+        public void return_to_start_page()
+        {
+            Coypu.Browser.Session.Visit("http://localhost:59174/");
+        }
+
+        public bool resume_game_button_showing()
+        {            
+            return Browser.Session.Has(() => Browser.Session.FindButton("resume game")); 
+        }
+
+        public void click_resume_game_button()
+        {
+            Browser.Session.ClickButton("btnResumeGame");
         }
 
         public static string information()
@@ -31,13 +47,8 @@ namespace Columbo.Minesweeper.Specs.Uat.PageObjects
         }
 
         public static void click_tile_at(int col, int row)
-        {
-            //var minefield = WebBrowser.Current.Table("minefield");
-
-            //minefield.TableRows[row].TableCells[col].Links[0].Click();
-
+        {            
             Browser.Session.Click(() => Browser.Session.FindId((string.Format("{0}_{1}", col, row))));
-
         }
 
         public static IEnumerable<TileCell> get_all_tiles()
@@ -63,16 +74,12 @@ namespace Columbo.Minesweeper.Specs.Uat.PageObjects
                 }
             }
 
-
-
-
-            //var minefield = WebBrowser.Current.Table("minefield");
-            //foreach (var row in minefield.TableRows)
-            //    foreach (var cell in row.TableCells)
-            //        all_tiles.Add(TileCell.convert_to_tile(cell));
-
-
             return all_tiles;
+        }
+
+        public bool contains_a_button_with_a_label_of(string button_label)
+        {
+            return Browser.Session.Has(() => Browser.Session.FindButton(button_label));            
         }
     }
 }

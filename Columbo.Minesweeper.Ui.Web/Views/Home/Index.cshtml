@@ -1,9 +1,19 @@
-﻿@{
+﻿@model Columbo.Minesweeper.Ui.Web.Models.StartGameViewModel
+@{
     ViewBag.Title = "Welcome to Columbo's Minesweeper!";
 }
 
 <h2>Start A Game</h2>
 <p>
+    @if (Model.show_resume_game_button)
+    {    
+        using (Html.BeginForm("ResumeGame", "Home"))
+        {                
+            <input id="btnResumeGame" type="submit" value="resume game" />        
+            <br /><br />
+        }
+    }
+
     @using (Html.BeginForm("StartGame", "Home", new { difficulty_name = "easy" }))
     {                        
         <input id="btnStartGame9x9" type="submit" value="minefield size of 9 x 9 (10 mines)" />

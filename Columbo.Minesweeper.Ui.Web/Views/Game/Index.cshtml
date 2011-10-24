@@ -18,24 +18,38 @@
         @if (Model.game_lost)
         {
             <div id="information">You have lost!</div>
-        }        
+        }       
+        
+        @if (Model.game_has_finished())
+        { 
+             using (Html.BeginForm("FinishGame", "Game"))
+            {                
+                <input id="btnStartNewGame" type="submit" value="Start New Game" />        
+                <br /><br />
+            }
+        }
         
         <table id="minefield">
             @foreach (var row_of_tiles in Model.rows_of_tiles())
             {
                 <tr>
-                @foreach (var tile in row_of_tiles){                
+                @foreach (var tile in row_of_tiles)
+                {                
                     <td>                    
-                    <a id="@String.Format("{0}_{1}", tile.row , tile.column)" href="@Url.Action("Reveal", new { col = tile.column, row = tile.row })">
-                        @if (tile.is_revealed) {
-                            if (tile.contains_mine) {
+                    <a id="@String.Format("{0}_{1}", tile.row, tile.column)" href="@Url.Action("Reveal", new { col = tile.column, row = tile.row })">
+                        @if (tile.is_revealed)
+                        {
+                            if (tile.contains_mine)
+                            {
                                 <img border="0" id="ExplodedMine" src="/Images/ExplodedMine.gif" />
                             }
-                            else {
+                            else
+                            {
                                 <img border="0" id="EmptyTile" src="@String.Format("/Images/EmptyTile_near_{0}.gif", tile.number_of_mines_surrounding)" />
                             }
                         }
-                        else {
+                        else
+                        {
                             <img border="0" id="UnrevealedTile" src="/Images/UnrevealedTile.gif" />
                         }                        
                         </a></td>                
