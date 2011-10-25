@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Columbo.Minesweeper.Application.Commands.Infrastructure;
 using Columbo.Minesweeper.Application.Domain;
 using Columbo.Minesweeper.Application.Commands;
 using Columbo.Minesweeper.Ui.Web.Models;
@@ -26,7 +27,10 @@ namespace Columbo.Minesweeper.Ui.Web.Controllers
 
         public ActionResult Index()
         {
-            var minefield_model = _presenter.get_view_of_minefield_for(_player_identifier.get_player_identifier());                                                                              
+            var minefield_model = _presenter.get_view_of_minefield_for(_player_identifier.get_player_identifier());
+
+            if (minefield_model == null)
+                return RedirectToAction("Index", "Home");
 
             return View(minefield_model);
         }

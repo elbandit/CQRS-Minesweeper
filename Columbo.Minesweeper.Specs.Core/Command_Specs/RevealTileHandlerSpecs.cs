@@ -1,5 +1,6 @@
 ﻿using System;
 using Columbo.Minesweeper.Application.Commands;
+using Columbo.Minesweeper.Application.Commands.Infrastructure;
 using Columbo.Minesweeper.Application.Domain;
 using Machine.Fakes;
 using Machine.Specifications;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Columbo.Minesweeper.Application.Commands;
+using Columbo.Minesweeper.Application.Commands.Infrastructure;
 using Columbo.Minesweeper.Application.Domain;
 using StructureMap;
 using StructureMap.Configuration.DSL;

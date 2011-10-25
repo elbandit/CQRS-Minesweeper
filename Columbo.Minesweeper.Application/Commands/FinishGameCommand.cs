@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Columbo.Minesweeper.Application.Commands.Infrastructure;
 
 namespace Columbo.Minesweeper.Application.Commands
 {

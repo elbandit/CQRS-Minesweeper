@@ -54,15 +54,15 @@
   <ItemGroup>
     <Compile Include="Commands\FinishGameCommand.cs" />
     <Compile Include="Commands\FinishGameCommandHandler.cs" />
-    <Compile Include="Commands\GameRepository.cs" />
-    <Compile Include="Commands\GameTypeMapper.cs" />
-    <Compile Include="Commands\ICommandHandlerRegistry.cs" />
-    <Compile Include="Commands\IGameRepository.cs" />
-    <Compile Include="Commands\StructureMapCommandHandlerRegistry.cs" />
+    <Compile Include="Commands\Infrastructure\GameRepository.cs" />
+    <Compile Include="Commands\Infrastructure\GameTypeMapper.cs" />
+    <Compile Include="Commands\Infrastructure\ICommandHandlerRegistry.cs" />
+    <Compile Include="Commands\Infrastructure\IGameRepository.cs" />
+    <Compile Include="Commands\Infrastructure\StructureMapCommandHandlerRegistry.cs" />
     <Compile Include="Domain\GameDifficulty.cs" />
     <Compile Include="Domain\GameDifficultyFactory.cs" />
     <Compile Include="Domain\GameType.cs" />
-    <Compile Include="Commands\IGameTypeMapper.cs" />
+    <Compile Include="Commands\Infrastructure\IGameTypeMapper.cs" />
     <Compile Include="Domain\GridFactory.cs" />
     <Compile Include="Domain\IGridFactory.cs" />
     <Compile Include="Domain\IMinePlanterFactory.cs" />
@@ -73,7 +73,7 @@
     <Compile Include="Domain\MinefieldFactory.cs" />
     <Compile Include="Domain\MinePlanterFactory.cs" />
     <Compile Include="Domain\MinesweeperFactory.cs" />
-    <Compile Include="Commands\TransactionalHandler.cs" />
+    <Compile Include="Commands\Infrastructure\TransactionalHandler.cs" />
     <Compile Include="Domain\Coordinate.cs" />
     <Compile Include="Domain\Grid.cs" />
     <Compile Include="Domain\IMinesweeperFactory.cs" />
@@ -87,11 +87,11 @@
     <Compile Include="Domain\MinePlanter.cs" />
     <Compile Include="Domain\Minesweeper.cs" />
     <Compile Include="Commands\CreateGameCommand.cs" />
-    <Compile Include="Commands\CreateNewGameHandler.cs" />
-    <Compile Include="Commands\IBus.cs" />
-    <Compile Include="Commands\ICommand.cs" />
-    <Compile Include="Commands\ICommandHandler.cs" />
-    <Compile Include="Commands\InProcessCommandBus.cs" />
+    <Compile Include="Commands\CreateGameHandler.cs" />
+    <Compile Include="Commands\Infrastructure\IBus.cs" />
+    <Compile Include="Commands\Infrastructure\ICommand.cs" />
+    <Compile Include="Commands\Infrastructure\ICommandHandler.cs" />
+    <Compile Include="Commands\Infrastructure\InProcessCommandBus.cs" />
     <Compile Include="Commands\RevealTileCommand.cs" />
     <Compile Include="Commands\RevealTileHandler.cs" />
     <Compile Include="Domain\RandomTilePicker.cs" />
@@ -124,9 +124,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Commands\Mapping\Minesweeper.hbm.xml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Commands\Infrastructure\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Commands\Mapping\Tile.hbm.xml" />
   </ItemGroup>

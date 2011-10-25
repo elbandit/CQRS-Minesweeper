@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.Mvc;
+using Columbo.Minesweeper.Application.Commands.Infrastructure;
 using Columbo.Minesweeper.Application.Queries;
 using Columbo.Minesweeper.Ui.Web.Controllers;
 using Columbo.Minesweeper.Application.Domain;

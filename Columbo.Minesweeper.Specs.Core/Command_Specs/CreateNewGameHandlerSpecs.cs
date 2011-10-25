@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Columbo.Minesweeper.Application.Commands;
+using Columbo.Minesweeper.Application.Commands.Infrastructure;
 using Columbo.Minesweeper.Application.Domain;
 using Machine.Specifications;
 using Machine.Fakes;
@@ -12,8 +13,8 @@ namespace Columbo.Minesweeper.Specs.Core.Command_Specs
 {    
     public class CreateNewGameHandlerSpecs
     {
-        [Subject(typeof(CreateNewGameHandler))]
-        public class when_handling_a_create_new_game_command : WithSubject<CreateNewGameHandler>
+        [Subject(typeof(CreateGameHandler))]
+        public class when_handling_a_create_new_game_command : WithSubject<CreateGameHandler>
         {
             private Establish context = () =>
             {

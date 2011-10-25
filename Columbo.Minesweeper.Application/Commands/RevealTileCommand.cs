@@ -1,4 +1,5 @@
 ﻿using System;
+using Columbo.Minesweeper.Application.Commands.Infrastructure;
 using Columbo.Minesweeper.Application.Domain;
 
 namespace Columbo.Minesweeper.Application.Commands

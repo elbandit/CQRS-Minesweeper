@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Columbo.Minesweeper.Specs.Uat.Utilities;
 using Coypu;
+using NUnit.Framework;
 using OpenQA.Selenium.Remote;
 using OpenQA.Selenium;
 
@@ -37,6 +38,11 @@ namespace Columbo.Minesweeper.Specs.Uat.PageObjects
         public string title
         {
             get { return WebBrowser.Current.Title; }
+        }
+
+        public bool is_displayed()
+        {
+            return title.Equals("Welcome to Columbo's Minesweeper!");
         }
     }
 }

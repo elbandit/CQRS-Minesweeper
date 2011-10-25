@@ -59,10 +59,10 @@ namespace Columbo.Minesweeper.Specs.Uat.Steps
                 Assert.That(tile.is_empty(), Is.True); 
         }
 
-        [Then(@"I should be asked whether I would like to start a new game")]
-        public void IShouldBeAskedWhetherIWouldLikeToStartANewGame()
+        [Then(@"I should be redirected back to the start page")]
+        public void ThenIShouldBeRedirectedBackToTheStartPage()
         {
-            Assert.Fail();
+            Assert.That(new StartPage().is_displayed(), Is.True);
         }
 
         [When(@"I click on the tile at coordinate (.*),(.*)")]

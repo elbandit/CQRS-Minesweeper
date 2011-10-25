@@ -99,6 +99,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MarkATileWithAFlag.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\PlayingAGameThatHasNotStarted.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PlayingAGameThatHasNotStarted.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\ResumingAGame.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -144,6 +149,10 @@
     <None Include="Features\MarkATileWithAFlag.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>MarkATileWithAFlag.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\PlayingAGameThatHasNotStarted.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>PlayingAGameThatHasNotStarted.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\ResumingAGame.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
