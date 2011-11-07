@@ -40,7 +40,7 @@ namespace Columbo.Minesweeper.Ui.Web.Controllers
             {
                 var game_view = _presenter.get_view_of_minefield_for(_player_identifier.get_player_identifier());
 
-                if (game_view != null && !game_view.game_has_finished())
+                if (game_view != null && !game_view.game_has_finished)
                 {
                     viewmodel.show_resume_game_button = true;
                 }

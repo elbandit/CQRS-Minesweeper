@@ -7,16 +7,16 @@ namespace Columbo.Minesweeper.Application.Domain
 {
     public class MinePlanterFactory : IMinePlanterFactory
     {
-        private ITilePicker _tile_picker;
+        private ICoordinatePicker _coordinatePicker;
 
-        public MinePlanterFactory(ITilePicker tile_picker)
+        public MinePlanterFactory(ICoordinatePicker coordinate_picker)
         {
-            _tile_picker = tile_picker;
+            _coordinatePicker = coordinate_picker;
         }
 
-        public IMinePlanter create(int number_of_mines_to_plant)
+        public IMinePlanter create_for(GameDifficulty game_difficulty)
         {
-            return new MinePlanter(_tile_picker, number_of_mines_to_plant);
+            return new MinePlanter(_coordinatePicker, game_difficulty);
         }
     }
 }

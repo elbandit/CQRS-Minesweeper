@@ -36,10 +36,8 @@ namespace Columbo.Minesweeper.Specs.Uat.PageObjects
 
             var is_unrevealed = cell.FindElement(By.TagName("img")).GetAttribute("src").Contains("UnrevealedTile");
             
-            //if (is_empty)
-            //    number_of_mines_surrounding_by = int.Parse(cell.FindElement(By.Id("num_of_mines_near")).Text);
-
-            var coordinates = cell.FindElement(By.TagName("a")).GetAttribute("id").Split('_');            
+          
+            var coordinates = cell.FindElement(By.TagName("img")).GetAttribute("id").Split('_');            
 
             var row = int.Parse(coordinates[0].ToString());
             var column = int.Parse(coordinates[1].ToString());

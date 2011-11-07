@@ -1,4 +1,4 @@
-﻿@model Columbo.Minesweeper.Application.Queries.Views.MinefieldModel
+﻿@model Columbo.Minesweeper.Application.Queries.Views.MinefieldView
 @{
     Layout = null;
 }
@@ -7,56 +7,111 @@
 
 <html>
 <head>
-    <title>Index</title>
+    <title>Index</title>    
+    <script src="/Scripts/jquery-1.6.1.js" type="text/javascript"></script>    
+    <script src="/Scripts/jquery.tmpl.js" type="text/javascript"></script>    
+    <script src="/Scripts/knockout-1.2.1.js" type="text/javascript"></script>
 </head>
+
+<script type="text/javascript">
+
+    function row(tiles) {
+        this.tiles = ko.observable(tiles);                
+    }
+
+    function tile(row, column, has_been_revealed, tile_image, ownerViewModel) {
+        this.row = ko.observable(row);
+        this.column = ko.observable(column);
+        this.has_been_revealed = has_been_revealed;
+        this.tile_image = tile_image;
+
+
+        this.reveal = function () {
+            if (this.has_been_revealed != true)
+                ownerViewModel.reveal(this);    
+        };
+        this.ownerViewModel = ownerViewModel;
+    }
+
+    
+    // Overall viewmodel for this screen, along with initial state
+    function taskListViewModel() {
+
+        var self = this;
+
+        this.rows = ko.observableArray([]);
+        this.game_won = ko.observable();
+        this.game_lost = ko.observable();
+      
+        this.reveal = function (tile) {
+         
+            $.post("Game/AjaxReveal", { col: tile.column, row: tile.row }, function (data) {
+
+                self.update_mines();
+            });
+        };
+
+        this.update_mines = function () {
+            $.get("Game/Ajax", function (data) {
+
+                var rows = $.map(data.tile_grid, function (item) {
+                    return new row($.map(item, function (tiles) {
+                        return new tile(tiles.row, tiles.column, tiles.has_been_revealed, tiles.tile_image, self)
+                    }))
+                })
+
+                self.game_won(data.game_won);
+                self.game_lost(data.game_lost);
+
+                self.rows(rows)
+            });
+        };
+
+        // Load initial state from server
+        self.update_mines();
+    }; 
+</script>
 <body>
-    <div>        
-        @if (Model.game_won)
-        {
-            <div id="information">You have won!</div>
-        }        
-        @if (Model.game_lost)
-        {
-            <div id="information">You have lost!</div>
-        }       
-        
-        @if (Model.game_has_finished())
-        { 
-             using (Html.BeginForm("FinishGame", "Game"))
+    
+    <div id="win-message" data-bind="visible: game_won">
+        You have won!
+    </div>
+
+    <div id="lose-message" data-bind="visible: game_lost">
+        You have lost!
+    </div>
+
+    <div id="start-new-game" data-bind="visible: game_won || game_lost">
+         @using (Html.BeginForm("FinishGame", "Game"))
             {                
                 <input id="btnStartNewGame" type="submit" value="Start New Game" />        
                 <br /><br />
             }
-        }
-        
-        <table id="minefield">
-            @foreach (var row_of_tiles in Model.rows_of_tiles())
-            {
-                <tr>
-                @foreach (var tile in row_of_tiles)
-                {                
-                    <td>                    
-                    <a id="@String.Format("{0}_{1}", tile.row, tile.column)" href="@Url.Action("Reveal", new { col = tile.column, row = tile.row })">
-                        @if (tile.is_revealed)
-                        {
-                            if (tile.contains_mine)
-                            {
-                                <img border="0" id="ExplodedMine" src="/Images/ExplodedMine.gif" />
-                            }
-                            else
-                            {
-                                <img border="0" id="EmptyTile" src="@String.Format("/Images/EmptyTile_near_{0}.gif", tile.number_of_mines_surrounding)" />
-                            }
-                        }
-                        else
-                        {
-                            <img border="0" id="UnrevealedTile" src="/Images/UnrevealedTile.gif" />
-                        }                        
-                        </a></td>                
-                }
-                </tr>
-             }                        
-        </table>
-    </div>
+    </div>    
+
+    <table id="minefield">    
+        <tbody data-bind="template: 'reservationTemplate'"></tbody>
+    </table>
+
+    <script type="text/x-jquery-tmpl" id="reservationTemplate">
+        {{each rows}}
+            <tr data-bind="template: { name: 'childrenTemplate', foreach: tiles }"></tr>                 
+        {{/each}}
+    </script>
+
+    <script type="text/html" id="childrenTemplate">                                
+        <td>
+            <img id="${row}_${column}" data-bind="click: reveal" border="0" id="EmptyTile" src="/Images/${tile_image}.gif")" />              
+        </td>                
+    </script> 
+
+    
+<script type="text/javascript">
+
+    var viewModel = new taskListViewModel();
+
+    ko.applyBindings(viewModel);
+
+</script>
 </body>
 </html>

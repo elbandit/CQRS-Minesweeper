@@ -13,21 +13,30 @@ namespace Columbo.Minesweeper.Application.Domain
         private Coordinate _located_at;        
         private int _id;
         private IMinesweeper _minesweeper;
+        private readonly IGrid _grid;
+        public event TileClearedEventHandler tile_cleared;
+        public event EventHandler mine_exploded;
+
+        public void set_number_of_mines_surrounding_on(IGrid grid)
+        {
+            set_number_of_tiles_with_mines_surrounding_this_tile_based_on(grid);
+        }
 
         private Tile()
         {
 
         }
 
-        public Tile(Coordinate location, IMinesweeper minesweeper)
+        public Tile(Coordinate location, IMinesweeper minesweeper, IGrid grid)
         {
             _located_at = location;
-            _minesweeper = minesweeper;            
+            _minesweeper = minesweeper;
+            _grid = grid;
         }
 
         public void reveal()
         {
-            _is_revealed = true;
+            _is_revealed = true;                         
         }
 
         public bool contains_mine()
@@ -45,10 +54,8 @@ namespace Columbo.Minesweeper.Application.Domain
             return !contains_mine() && _is_revealed == false;
         }
 
-        public bool is_surrounded_by_mines_on(IGrid grid)
-        {
-            set_number_of_tiles_with_mines_surrounding_this_tile_based_on(grid);
-
+        public bool is_surrounded_by_a_mine()
+        {         
             return _number_of_mines_surrounding > 0;
         }
 

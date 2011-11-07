@@ -10,11 +10,16 @@ namespace Columbo.Minesweeper.Application.Queries
 {
     public class Presenter : IPresenter
     {
-        public MinefieldModel get_view_of_minefield_for(Guid game_id)
+        public MinefieldView get_view_of_minefield_for(Guid game_id)
         {
             using (var session = SessionFactory.GetNewSession())
             {
-                return session.Query<MinefieldModel>().Where(x => x.game_id == game_id).FirstOrDefault();
+                var minefield_view =  session.Query<MinefieldView>().Where(x => x.game_id == game_id).FirstOrDefault();
+
+                if (minefield_view != null)
+                    minefield_view.tile_grid = minefield_view.tiles.OrderBy(x => x.column).GroupBy(x => x.row).ToList<IEnumerable<TileView>>();
+
+                return minefield_view;
             } 
         }
     }

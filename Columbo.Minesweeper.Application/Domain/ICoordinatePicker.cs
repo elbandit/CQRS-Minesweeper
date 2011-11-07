@@ -5,8 +5,8 @@ using System.Text;
 
 namespace Columbo.Minesweeper.Application.Domain
 {
-    public interface ITilePicker
+    public interface ICoordinatePicker
     {
-        ITile select_tile_from(IList<ITile> tiles_to_select_from);
+        IEnumerable<Coordinate> pick_coordinates_from(MinefieldSize minefield_size, int number_of_mines);
     }
 }

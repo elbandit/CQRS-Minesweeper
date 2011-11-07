@@ -10,7 +10,6 @@ namespace Columbo.Minesweeper.Application.Domain
         event EventHandler mine_exploded;
         event EventHandler minefield_cleared;
 
-        void reveal_tile_at(Coordinate coordinate);
-        void plant_mines_with(IMinePlanter mine_planter);
+        void reveal_tile_at(Coordinate coordinate);      
     }
 }

@@ -14,9 +14,11 @@ namespace Columbo.Minesweeper.Application.Domain
             _tile_factory = tile_factory;
         }
 
-        public IGrid create_grid_with_size_of(int rows, int columns, IMinesweeper minesweeper)
+        public IGrid create_grid_with_size_of(MinefieldSize minefield_size, IMinesweeper minesweeper)
         {
-            return new Grid(_tile_factory, rows, columns, minesweeper);
+            var grid = new Grid(_tile_factory, minefield_size, minesweeper);
+           
+            return grid;
         }
     }
 }

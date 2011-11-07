@@ -43,6 +43,7 @@
     <Content Include="db\up\0002_CreateGameTable.sql" />
     <Content Include="db\up\0003_AddGameWonColumnToGameTable.sql" />
     <Content Include="db\up\0004_AddGameLostColumnToGameTable.sql" />
+    <Content Include="db\up\0005_CreateMinefieldAndGameViewsTable.sql" />
     <Content Include="Ideas.txt" />
     <Content Include="Tools\RoundhousE.v0.7.0.281\rh.exe" />
     <Content Include="_BuildInfo.xml" />

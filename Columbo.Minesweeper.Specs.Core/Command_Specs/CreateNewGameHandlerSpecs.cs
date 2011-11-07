@@ -19,7 +19,7 @@ namespace Columbo.Minesweeper.Specs.Core.Command_Specs
             private Establish context = () =>
             {
                 create_game_command = new CreateGameCommand();
-                create_game_command.game_difficulty = new GameDifficulty(3, 3, 1);
+                create_game_command.game_difficulty = new GameDifficulty(new MinefieldSize(3, 3), 1);
                 create_game_command.player_id = Guid.NewGuid();
                 
                 The<IGameTypeMapper>().WhenToldTo(x => x.map_from(create_game_command)).Return(game_options);

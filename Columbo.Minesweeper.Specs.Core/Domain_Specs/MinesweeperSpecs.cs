@@ -22,7 +22,7 @@ namespace Columbo.Minesweeper.Specs.Core.Domain_Specs
                 number_of_mines = 1;
                 player_id = Guid.NewGuid();
 
-                var game_difficulty = new GameDifficulty(3, 3, 1);
+                var game_difficulty = new GameDifficulty(new MinefieldSize(3, 3), 1);
 
                 game_options = new GameOptions(game_difficulty, player_id);
                 
@@ -59,7 +59,7 @@ namespace Columbo.Minesweeper.Specs.Core.Domain_Specs
                 minefield_factory = An<IMinefieldFactory>();
                 minefield = An<IMinefield>();
 
-                var game_difficulty = new GameDifficulty(3, 3, 1);
+                var game_difficulty = new GameDifficulty(new MinefieldSize(3, 3), 1);
 
                 var game_options = new GameOptions(game_difficulty, Guid.NewGuid());
                 
@@ -93,7 +93,7 @@ namespace Columbo.Minesweeper.Specs.Core.Domain_Specs
 
                 coordinate = new Coordinate(1,1);
 
-                var game_difficulty = new GameDifficulty(3, 3, 1);
+                var game_difficulty = new GameDifficulty(new MinefieldSize(3, 3), 1);
                 var game_options = new GameOptions(game_difficulty, Guid.NewGuid());
 
                 Subject = new Application.Domain.Minesweeper(minefield_factory, game_options);
@@ -131,7 +131,7 @@ namespace Columbo.Minesweeper.Specs.Core.Domain_Specs
 
                 coordinate = new Coordinate(1, 1);
 
-                var game_difficulty = new GameDifficulty(3, 3, 1);
+                var game_difficulty = new GameDifficulty(new MinefieldSize(3, 3), 1);
                 var game_options = new GameOptions(game_difficulty, Guid.NewGuid());
 
                 Subject = new Application.Domain.Minesweeper(minefield_factory, game_options);

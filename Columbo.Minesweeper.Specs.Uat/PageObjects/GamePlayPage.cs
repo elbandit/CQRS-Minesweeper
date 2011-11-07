@@ -36,23 +36,29 @@ namespace Columbo.Minesweeper.Specs.Uat.PageObjects
             Browser.Session.ClickButton("btnResumeGame");
         }
 
-        public static string information()
+        public bool message_displayed_with_text_of(string message_text)
         {
-            return Browser.Session.FindId("information").Text;
+            return Browser.Session.HasContent(message_text);
         }
 
         public static int no_of_tiles()
-        {            
+        {
+            System.Threading.Thread.Sleep(2000);
+
             return WebBrowser.Current.Table("minefield").TableCells.Count;
         }
 
         public static void click_tile_at(int col, int row)
         {            
             Browser.Session.Click(() => Browser.Session.FindId((string.Format("{0}_{1}", col, row))));
+
+            System.Threading.Thread.Sleep(2000);
         }
 
         public static IEnumerable<TileCell> get_all_tiles()
         {
+            System.Threading.Thread.Sleep(3000);
+
             var all_tiles = new List<TileCell>();
 
             var driver = ((RemoteWebDriver) Browser.Session.Native);

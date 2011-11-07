@@ -64,5 +64,27 @@ namespace Columbo.Minesweeper.Specs.Uat.Utilities
                 }
             }
         }
+
+        public static void set_number_of_mines_surrounding_tile(Guid game_id, int row, int column, int surrounded_by)
+        {
+            using (var conn = new SqlConnection(@"Data Source=.;Initial Catalog=Minesweeper;Integrated Security=True"))
+            {
+                using (var cmd = conn.CreateCommand())
+                {
+                    conn.Open();
+                    cmd.CommandText = "UPDATE Minefields " +
+                                      "SET Number_Of_Mines_Surrounding = @surrounded_by " +
+                                      "WHERE Game_ID = @GameID " +
+                                      "AND Row = @Row " +
+                                      "AND Col = @Col";
+                    cmd.Parameters.AddWithValue("GameID", game_id);
+                    cmd.Parameters.AddWithValue("Row", row);
+                    cmd.Parameters.AddWithValue("Col", column);
+                    cmd.Parameters.AddWithValue("surrounded_by", surrounded_by);
+                    cmd.CommandType = CommandType.Text;
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }

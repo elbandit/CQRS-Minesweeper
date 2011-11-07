@@ -8,6 +8,6 @@ namespace Columbo.Minesweeper.Application.Queries
 {
     public interface IPresenter
     {
-        MinefieldModel get_view_of_minefield_for(Guid game_id);
+        MinefieldView get_view_of_minefield_for(Guid game_id);
     }
 }

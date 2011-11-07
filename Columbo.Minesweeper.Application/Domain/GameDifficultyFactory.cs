@@ -14,16 +14,16 @@ namespace Columbo.Minesweeper.Application.Domain
             switch (difficulty_name)
             {
                 case  "easy" :
-                    game_difficulty = new GameDifficulty(9, 9, 10);
+                    game_difficulty = new GameDifficulty(new MinefieldSize(9, 9), 10);
                     break;
                 case "medium":
-                    game_difficulty = new GameDifficulty(16, 16, 40);
+                    game_difficulty = new GameDifficulty(new MinefieldSize(16, 16), 40);
                     break;
                 case "hard":
-                    game_difficulty = new GameDifficulty(30, 16, 99);
+                    game_difficulty = new GameDifficulty(new MinefieldSize(30, 16), 99);
                     break;
                 default :
-                    game_difficulty = new GameDifficulty(9, 9, 10);
+                    game_difficulty = new GameDifficulty(new MinefieldSize(9, 9), 10);
                     break;
             }
 

@@ -40,48 +40,48 @@ namespace Columbo.Minesweeper.Specs.Core.Domain_Specs
                 var coordinate_00 = new Coordinate(0, 0);                                
                 The<IGrid>().WhenToldTo(x => x.contains_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_00)))).Return(true);
                 The<IGrid>().WhenToldTo(x => x.mine_on_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_00)))).Return(false);
-                The<IGrid>().WhenToldTo(x => x.mines_surrounding_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_00)))).Return(false);
+                The<IGrid>().WhenToldTo(x => x.mines_near_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_00)))).Return(false);
 
                 var coordinate_01 = new Coordinate(0, 1);
                                                
                 The<IGrid>().WhenToldTo(x => x.contains_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_01)))).Return(true);
                 The<IGrid>().WhenToldTo(x => x.mine_on_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_01)))).Return(false);
-                The<IGrid>().WhenToldTo(x => x.mines_surrounding_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_01)))).Return(false);
+                The<IGrid>().WhenToldTo(x => x.mines_near_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_01)))).Return(false);
 
                 var coordinate_02 = new Coordinate(0, 2);                                                
                 The<IGrid>().WhenToldTo(x => x.contains_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_02)))).Return(true);
                 The<IGrid>().WhenToldTo(x => x.mine_on_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_02)))).Return(false);
-                The<IGrid>().WhenToldTo(x => x.mines_surrounding_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_02)))).Return(false);
+                The<IGrid>().WhenToldTo(x => x.mines_near_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_02)))).Return(false);
 
                 var coordinate_10 = new Coordinate(1, 0);                                
                 The<IGrid>().WhenToldTo(x => x.contains_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_10)))).Return(true);
                 The<IGrid>().WhenToldTo(x => x.mine_on_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_10)))).Return(false);
-                The<IGrid>().WhenToldTo(x => x.mines_surrounding_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_10)))).Return(false);
+                The<IGrid>().WhenToldTo(x => x.mines_near_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_10)))).Return(false);
 
                 var coordinate_11 = new Coordinate(1, 1);                
                 The<IGrid>().WhenToldTo(x => x.contains_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_11)))).Return(true);
                 The<IGrid>().WhenToldTo(x => x.mine_on_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_11)))).Return(false);
-                The<IGrid>().WhenToldTo(x => x.mines_surrounding_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_11)))).Return(true);
+                The<IGrid>().WhenToldTo(x => x.mines_near_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_11)))).Return(true);
 
                 var coordinate_12 = new Coordinate(1, 2);                                
                 The<IGrid>().WhenToldTo(x => x.contains_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_12)))).Return(true);
                 The<IGrid>().WhenToldTo(x => x.mine_on_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_12)))).Return(false);
-                The<IGrid>().WhenToldTo(x => x.mines_surrounding_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_12)))).Return(true);
+                The<IGrid>().WhenToldTo(x => x.mines_near_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_12)))).Return(true);
 
                 var coordinate_20 = new Coordinate(2, 0);                
                 The<IGrid>().WhenToldTo(x => x.contains_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_20)))).Return(true);
                 The<IGrid>().WhenToldTo(x => x.mine_on_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_20)))).Return(false);
-                The<IGrid>().WhenToldTo(x => x.mines_surrounding_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_20)))).Return(false);
+                The<IGrid>().WhenToldTo(x => x.mines_near_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_20)))).Return(false);
 
                 var coordinate_21 = new Coordinate(2, 1);                
                 The<IGrid>().WhenToldTo(x => x.contains_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_21)))).Return(true);
                 The<IGrid>().WhenToldTo(x => x.mine_on_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_21)))).Return(false);
-                The<IGrid>().WhenToldTo(x => x.mines_surrounding_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_21)))).Return(true);
+                The<IGrid>().WhenToldTo(x => x.mines_near_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_21)))).Return(true);
 
                 var coordinate_22 = new Coordinate(2,2);                
                 The<IGrid>().WhenToldTo(x => x.contains_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_22)))).Return(true);
                 The<IGrid>().WhenToldTo(x => x.mine_on_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_22)))).Return(true);
-                The<IGrid>().WhenToldTo(x => x.mines_surrounding_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_22)))).Return(true);                
+                The<IGrid>().WhenToldTo(x => x.mines_near_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_22)))).Return(true);                
             };
 
             private Because of = () => Subject.reveal_tile_at(new Coordinate(0,0));
@@ -125,47 +125,47 @@ namespace Columbo.Minesweeper.Specs.Core.Domain_Specs
                 var coordinate_00 = new Coordinate(0, 0);                
                 The<IGrid>().WhenToldTo(x => x.contains_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_00)))).Return(true);
                 The<IGrid>().WhenToldTo(x => x.mine_on_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_00)))).Return(false);
-                The<IGrid>().WhenToldTo(x => x.mines_surrounding_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_00)))).Return(true);
+                The<IGrid>().WhenToldTo(x => x.mines_near_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_00)))).Return(true);
 
                 var coordinate_01 = new Coordinate(0, 1);                
                 The<IGrid>().WhenToldTo(x => x.contains_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_01)))).Return(true);
                 The<IGrid>().WhenToldTo(x => x.mine_on_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_01)))).Return(false);
-                The<IGrid>().WhenToldTo(x => x.mines_surrounding_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_01)))).Return(true);
+                The<IGrid>().WhenToldTo(x => x.mines_near_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_01)))).Return(true);
 
                 var coordinate_02 = new Coordinate(0, 2);
                 The<IGrid>().WhenToldTo(x => x.contains_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_02)))).Return(true);
                 The<IGrid>().WhenToldTo(x => x.mine_on_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_02)))).Return(false);
-                The<IGrid>().WhenToldTo(x => x.mines_surrounding_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_02)))).Return(true);
+                The<IGrid>().WhenToldTo(x => x.mines_near_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_02)))).Return(true);
 
                 var coordinate_10 = new Coordinate(1, 0);                
                 The<IGrid>().WhenToldTo(x => x.contains_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_10)))).Return(true);
                 The<IGrid>().WhenToldTo(x => x.mine_on_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_10)))).Return(false);
-                The<IGrid>().WhenToldTo(x => x.mines_surrounding_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_10)))).Return(true);
+                The<IGrid>().WhenToldTo(x => x.mines_near_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_10)))).Return(true);
 
                 var coordinate_11 = new Coordinate(1, 1);
                 The<IGrid>().WhenToldTo(x => x.contains_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_11)))).Return(true);
                 The<IGrid>().WhenToldTo(x => x.mine_on_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_11)))).Return(true);
-                The<IGrid>().WhenToldTo(x => x.mines_surrounding_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_11)))).Return(false);
+                The<IGrid>().WhenToldTo(x => x.mines_near_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_11)))).Return(false);
 
                 var coordinate_12 = new Coordinate(1, 2);
                 The<IGrid>().WhenToldTo(x => x.contains_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_12)))).Return(true);
                 The<IGrid>().WhenToldTo(x => x.mine_on_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_12)))).Return(false);
-                The<IGrid>().WhenToldTo(x => x.mines_surrounding_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_12)))).Return(true);
+                The<IGrid>().WhenToldTo(x => x.mines_near_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_12)))).Return(true);
 
                 var coordinate_20 = new Coordinate(2, 0);                
                 The<IGrid>().WhenToldTo(x => x.contains_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_20)))).Return(true);
                 The<IGrid>().WhenToldTo(x => x.mine_on_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_20)))).Return(false);
-                The<IGrid>().WhenToldTo(x => x.mines_surrounding_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_20)))).Return(true);
+                The<IGrid>().WhenToldTo(x => x.mines_near_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_20)))).Return(true);
 
                 var coordinate_21 = new Coordinate(2, 1);                
                 The<IGrid>().WhenToldTo(x => x.contains_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_20)))).Return(true);
                 The<IGrid>().WhenToldTo(x => x.mine_on_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_20)))).Return(false);
-                The<IGrid>().WhenToldTo(x => x.mines_surrounding_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_20)))).Return(true);
+                The<IGrid>().WhenToldTo(x => x.mines_near_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_20)))).Return(true);
 
                 var coordinate_22 = new Coordinate(2, 2);
                 The<IGrid>().WhenToldTo(x => x.contains_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_22)))).Return(true);
                 The<IGrid>().WhenToldTo(x => x.mine_on_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_22)))).Return(true);
-                The<IGrid>().WhenToldTo(x => x.mines_surrounding_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_22)))).Return(true);
+                The<IGrid>().WhenToldTo(x => x.mines_near_tile_at(Arg<Coordinate>.Matches(c => c.Equals(coordinate_22)))).Return(true);
             };
 
             private Because of = () => Subject.reveal_tile_at(new Coordinate(0, 0));

@@ -103,7 +103,7 @@ namespace Columbo.Minesweeper.Specs.Uat.Steps
         [Then(@"I should see a message telling me that ""(.*)""")]
         public void IShouldSeeAMessageTellingMeThat(string message)
         {
-            Assert.That(GamePlayPage.information(), Is.EqualTo(message));
+            Assert.That(new GamePlayPage().message_displayed_with_text_of(message), Is.True);
         }
 
         [Then(@"I should see an option to resume my game")]

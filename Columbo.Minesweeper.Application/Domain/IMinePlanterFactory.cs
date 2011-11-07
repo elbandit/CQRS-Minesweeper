@@ -2,6 +2,6 @@
 {
     public interface IMinePlanterFactory
     {
-        IMinePlanter create(int number_of_mines_to_plant);
+        IMinePlanter create_for(GameDifficulty game_difficulty);
     }
 }

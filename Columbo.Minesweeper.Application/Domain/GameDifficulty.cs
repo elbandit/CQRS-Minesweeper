@@ -7,14 +7,13 @@ namespace Columbo.Minesweeper.Application.Domain
 {
     public class GameDifficulty
     {
-        public GameDifficulty(int rows, int columns, int number_of_mines)
+        public GameDifficulty(MinefieldSize minefield_size, int number_of_mines)
         {
-            this.rows = rows;
-            this.columns = columns;
+            this.minefield_size = minefield_size;
             this.number_of_mines = number_of_mines;
         }
-        public int rows { get; private set; }
-        public int columns { get; private set; }
+        
+        public MinefieldSize minefield_size { get; private set; }
         public int number_of_mines { get; private set; }
     }
 }

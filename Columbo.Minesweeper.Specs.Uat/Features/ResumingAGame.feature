@@ -8,6 +8,9 @@ Scenario: Resuming a game
 	And the minefield contains the following mines: 
 		| Row | Column |
 		| 0   | 1      |
+	And the following tiles are surrounded by mines:
+		| Row | Column | NumberOfMinesSurroundedBy |
+		| 0   | 0      | 1                         |
 	When I navigate to the game play page
 	And I click on the tile at coordinate 0,0
 	Then the following tiles should be revealed:
@@ -25,6 +28,9 @@ Scenario: Start a new game rather than finishing a current game
 	And the minefield contains the following mines: 
 		| Row | Column |
 		| 0   | 1      |
+	And the following tiles are surrounded by mines:
+		| Row | Column | NumberOfMinesSurroundedBy |
+		| 0   | 0      | 1                         |
 	When I navigate to the game play page
 	And I click on the tile at coordinate 0,0
 	Then the following tiles should be revealed:

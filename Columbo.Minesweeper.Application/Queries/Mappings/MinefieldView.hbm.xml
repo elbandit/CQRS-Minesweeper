@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+    namespace="Columbo.Minesweeper.Application.Queries.Views"
+        assembly="Columbo.Minesweeper.Application">
+
+  <class name="MinefieldView" table="GameViews" mutable="false" lazy="false" >
+
+    <id name="game_id" column="game_id" type="Guid">
+      <generator class="assigned"/>
+    </id>
+	  
+	  <property name="game_won" column="Has_Won"/>
+	  <property name="game_lost" column="Has_Lost"/>
+
+	  <bag name="tiles" lazy="false" inverse="true" cascade="all">
+        <key column="game_id"/>
+        <one-to-many class="TileView"></one-to-many>      
+      </bag>
+   
+  </class>
+                         
+</hibernate-mapping>

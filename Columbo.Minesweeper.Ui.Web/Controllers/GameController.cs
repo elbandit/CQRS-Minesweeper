@@ -35,6 +35,24 @@ namespace Columbo.Minesweeper.Ui.Web.Controllers
             return View(minefield_model);
         }
 
+        public ActionResult Ajax()
+        {
+            var minefield_model = _presenter.get_view_of_minefield_for(_player_identifier.get_player_identifier());
+            
+            return Json(minefield_model, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult AjaxReveal(int col, int row)
+        {
+            var reveal_tile_command = new RevealTileCommand();
+            reveal_tile_command.player_id = _player_identifier.get_player_identifier();
+            reveal_tile_command.coordinate = new Coordinate(row, col);
+
+            _bus.send(reveal_tile_command);
+
+            return Json(new {success = true});
+        }
+
         public ActionResult FinishGame()
         {
             var finish_command = new FinishGameCommand();

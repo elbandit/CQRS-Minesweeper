@@ -12,11 +12,17 @@
 	  <property access="field" name="_game_ended_in_a_win" column="Has_Won"/>
 	  <property access="field" name="_game_ended_in_a_loss" column="Has_Lost"/>
 
-	  <component access="field" class="Minefield" name="_minefield" lazy="false">
+    
+
+    <component access="field" class="Minefield" name="_minefield" lazy="false">
+
+      <component class="MineClearer" name="MineClearer" lazy="false">
+      </component>
+      
 		  <component access="field" class="Grid" name="_grid" lazy="false">
 			  
 			  <bag name="_tiles" access="field" lazy="false" inverse="true" cascade="all">
-				  <key column="game_id"/>
+				  <key column="game_id"/>         
 				  <one-to-many class="Tile"></one-to-many>
 			  </bag>
 			  

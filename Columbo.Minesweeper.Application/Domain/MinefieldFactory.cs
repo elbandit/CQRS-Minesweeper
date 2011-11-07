@@ -7,24 +7,30 @@ namespace Columbo.Minesweeper.Application.Domain
 {
     public class MinefieldFactory : IMinefieldFactory
     {
-        private IGridFactory _grid_factory;
+        private readonly IGridFactory _grid_factory;
         private readonly IMinePlanterFactory _mine_planter_factory;
+        private readonly IMineClearer _mine_clearer;
 
-        public MinefieldFactory(IGridFactory grid_factory, IMinePlanterFactory mine_planter_factory)
+        public MinefieldFactory(IGridFactory grid_factory, IMinePlanterFactory mine_planter_factory, IMineClearer mine_clearer)
         {
             _grid_factory = grid_factory;
             _mine_planter_factory = mine_planter_factory;
+            _mine_clearer = mine_clearer;
         }
 
-        public IMinefield create_a_mindfield_with_these_options(GameOptions game_type, IMinesweeper minesweeper)
-        {                        
-            var mine_planter = _mine_planter_factory.create(game_type.game_difficulty.number_of_mines);                       
+        public IMinefield create_a_mindfield_with_these_options(GameOptions game_options, IMinesweeper minesweeper)
+        {                                   
+            var grid = _grid_factory.create_grid_with_size_of(game_options.game_difficulty.minefield_size, 
+                                                                          minesweeper);
 
-            var minefield =  new Minefield(_grid_factory.create_grid_with_size_of(game_type.game_difficulty.rows, 
-                                                                                  game_type.game_difficulty.columns, 
-                                                                                  minesweeper));
+            var mine_planter = _mine_planter_factory.create_for(game_options.game_difficulty);
 
-            minefield.plant_mines_with(mine_planter);
+            mine_planter.plant_mines_on(grid);
+
+            var minefield = new Minefield(grid, _mine_clearer);
+           
+            // TODO: Move this to inside the constructor?
+            // DomainEvent.raise(new MinefieldCreatedFor(_game_id, minefield));
 
             return minefield;
         }

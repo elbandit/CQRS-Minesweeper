@@ -1,4 +1,5 @@
-﻿using NHibernate;
+﻿using Columbo.Minesweeper.Application.Commands.Infrastructure;
+using NHibernate;
 using NHibernate.Cfg;
 
 namespace Columbo.Minesweeper.Application.Infrastructure
@@ -10,9 +11,8 @@ namespace Columbo.Minesweeper.Application.Infrastructure
         public static void Init()
         {                       
             Configuration config = new Configuration();
-            config.AddAssembly("Columbo.Minesweeper.Application");
-            
-            config.Configure();            
+            config.AddAssembly("Columbo.Minesweeper.Application");            
+            config.Configure();
 
             _SessionFactory = config.BuildSessionFactory();
         }

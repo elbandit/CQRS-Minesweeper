@@ -9,8 +9,11 @@ namespace Columbo.Minesweeper.Ui.Web.Controllers
     {
         public Guid get_player_identifier()
         {
+            Guid player_id = Guid.NewGuid();
+
             HttpCookie cookie = HttpContext.Current.Request.Cookies["player_id"];
-            var player_id = new Guid(cookie.Value);
+            if (cookie != null)                                
+                player_id = new Guid(cookie.Value);
 
             return player_id;
         }

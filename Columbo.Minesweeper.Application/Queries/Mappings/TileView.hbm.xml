@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+    namespace="Columbo.Minesweeper.Application.Queries.Views"
+        assembly="Columbo.Minesweeper.Application">
+
+  <class name="TileView" table="MinefieldViews" mutable="false" lazy="false" >
+
+    <id name="tile_id" column="tile_id" type="int" unsaved-value="0">
+      <generator class="identity"/>
+    </id>
+
+    <property name="game_id" column="game_id"/>
+    
+    <property name="row" column="row"/>
+    <property name="column" column="col"/>
+    <property name="tile_image" column="Tile_Image"/>
+    <property name="has_been_revealed" column="Has_Been_Revealed"/>
+
+  </class>
+                         
+</hibernate-mapping>

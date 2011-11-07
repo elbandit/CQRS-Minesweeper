@@ -8,6 +8,11 @@ Scenario: Reveal all tiles that aren't mines and win the game
 	And the minefield contains the following mines: 
 		| Row | Column |
 		| 2   | 2      |
+	And the following tiles are surrounded by mines:
+		| Row | Column | NumberOfMinesSurroundedBy |
+		| 1   | 1      | 1                         |
+		| 1   | 2      | 1                         |
+		| 2   | 1      | 1                         |
 	When I navigate to the game play page
 	And I click on the tile at coordinate 0,0
 	Then the following tiles should be revealed:

@@ -65,12 +65,15 @@
     <Compile Include="Commands\Infrastructure\IGameTypeMapper.cs" />
     <Compile Include="Domain\GridFactory.cs" />
     <Compile Include="Domain\IGridFactory.cs" />
+    <Compile Include="Domain\IMineClearer.cs" />
     <Compile Include="Domain\IMinePlanterFactory.cs" />
     <Compile Include="Domain\ITileFactory.cs" />
-    <Compile Include="Domain\ITilePicker.cs" />
+    <Compile Include="Domain\ICoordinatePicker.cs" />
+    <Compile Include="Domain\MineClearer.cs" />
     <Compile Include="Domain\MineExplodedEvent.cs" />
     <Compile Include="Domain\MinefieldClearedEvent.cs" />
     <Compile Include="Domain\MinefieldFactory.cs" />
+    <Compile Include="Domain\MinefieldSize.cs" />
     <Compile Include="Domain\MinePlanterFactory.cs" />
     <Compile Include="Domain\MinesweeperFactory.cs" />
     <Compile Include="Commands\Infrastructure\TransactionalHandler.cs" />
@@ -94,39 +97,49 @@
     <Compile Include="Commands\Infrastructure\InProcessCommandBus.cs" />
     <Compile Include="Commands\RevealTileCommand.cs" />
     <Compile Include="Commands\RevealTileHandler.cs" />
-    <Compile Include="Domain\RandomTilePicker.cs" />
+    <Compile Include="Domain\RandomCoordinatePicker.cs" />
     <Compile Include="Domain\Tile.cs" />
+    <Compile Include="Domain\TileClearedEventArgs.cs" />
     <Compile Include="Domain\TileFactory.cs" />
+    <Compile Include="Events\DomainEvents.cs" />
+    <Compile Include="Events\IDomainEvent.cs" />
+    <Compile Include="Events\IDomainEventHandler.cs" />
+    <Compile Include="Events\IDomainEventHandlerFactory.cs" />
+    <Compile Include="Queries\Views\MinefieldView.cs" />
+    <Compile Include="Events\MinesweeperGameStarted.cs" />
+    <Compile Include="Events\MinesweeperGameStartedHandler.cs" />
+    <Compile Include="Events\StructureMapDomainEventHandlerFactory.cs" />
+    <Compile Include="Queries\Views\TileView.cs" />
+    <Compile Include="Infrastructure\IEnumerableExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Infrastructure\SessionFactory.cs" />
     <Compile Include="Queries\IPresenter.cs" />
     <Compile Include="Queries\Presentation.cs" />
-    <Compile Include="Queries\Views\MinefieldModel.cs" />
-    <Compile Include="Queries\Views\TileModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Commands\Mapping\nhibernate-mapping.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="packages.config" />
-    <None Include="Queries\Views\Mappings\nhibernate-mapping.xsd">
+    <None Include="Queries\Mappings\nhibernate-mapping.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Queries\Views\Mappings\MinefieldModel.hbm.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Queries\Views\Mappings\TileModel.hbm.xml">
+    <EmbeddedResource Include="Commands\Mapping\Minesweeper.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Commands\Mapping\Minesweeper.hbm.xml" />
-  </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
     <EmbeddedResource Include="Commands\Mapping\Tile.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Queries\Mappings\MinefieldView.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Queries\Mappings\TileView.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

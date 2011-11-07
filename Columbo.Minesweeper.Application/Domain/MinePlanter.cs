@@ -7,25 +7,21 @@ namespace Columbo.Minesweeper.Application.Domain
 {
     public class MinePlanter : IMinePlanter
     {
-        private int _number_of_mines_to_plant;
-        private ITilePicker _random_tile_picker;
+        private readonly GameDifficulty _game_difficulty;
+        private readonly ICoordinatePicker _random_coordinate_picker;
 
-        public MinePlanter(ITilePicker random_tile_picker, int number_of_mines_to_plant)
+        public MinePlanter(ICoordinatePicker random_coordinate_picker, GameDifficulty game_difficulty)
         {
-            _number_of_mines_to_plant = number_of_mines_to_plant;
-            _random_tile_picker = random_tile_picker;
+            _game_difficulty = game_difficulty;
+            _random_coordinate_picker = random_coordinate_picker;
         }
 
         public void plant_mines_on(IGrid grid)
         {
-            var number_of_mines_planted = 0;
+            var coordinates = _random_coordinate_picker.pick_coordinates_from(_game_difficulty.minefield_size, _game_difficulty.number_of_mines);
 
-            while (number_of_mines_planted < _number_of_mines_to_plant)
-            {
-                grid.plant_mine_using(_random_tile_picker);
-
-                number_of_mines_planted++;
-            }
+            foreach(var coordinate in coordinates)
+                grid.plant_mine_at(coordinate);           
         }
     }
 }

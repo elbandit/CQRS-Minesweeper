@@ -9,6 +9,9 @@ Scenario: Click a tile that is next to a mine on a minefield that contains one m
 	And the minefield contains the following mines: 
 		| Row | Column |
 		| 1   | 1      |
+	And the following tiles are surrounded by mines:
+		| Row | Column | NumberOfMinesSurroundedBy |
+		| 0   | 0      | 1                         |	
 	When I navigate to the game play page
 	And I click on the tile at coordinate 0,0
 	Then the following tiles should be revealed:
@@ -30,6 +33,11 @@ Scenario: Click a tile that is not next to a minefield that contains one mine
 	And the minefield contains the following mines: 
 		| Row | Column |
 		| 2   | 2      |
+	And the following tiles are surrounded by mines:
+		| Row | Column | NumberOfMinesSurroundedBy |
+		| 1   | 1      | 1                         |
+		| 1   | 2      | 1                         |
+		| 2   | 1      | 1                         |
 	When I navigate to the game play page
 	And I click on the tile at coordinate 0,0
 	Then the following tiles should be revealed:

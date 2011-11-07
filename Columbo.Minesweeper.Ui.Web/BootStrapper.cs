@@ -5,6 +5,7 @@ using System.Web;
 using Columbo.Minesweeper.Application.Commands;
 using Columbo.Minesweeper.Application.Commands.Infrastructure;
 using Columbo.Minesweeper.Application.Domain;
+using Columbo.Minesweeper.Application.Events;
 using StructureMap;
 using StructureMap.Configuration.DSL;
 using Columbo.Minesweeper.Application.Queries;
@@ -21,7 +22,10 @@ namespace Columbo.Minesweeper.Ui.Web
                 x.AddRegistry<UiRegistry>();
                 x.AddRegistry<DomainRegistry>();
                 x.AddRegistry<CommandHandlerRegistry>();
+                x.AddRegistry<EventHandlerRegistry>();
             });
+
+            DomainEvents.DomainEventHandlerFactory = (IDomainEventHandlerFactory) ObjectFactory.GetInstance(typeof(IDomainEventHandlerFactory));
         }
 
         public class UiRegistry : Registry
@@ -45,6 +49,18 @@ namespace Columbo.Minesweeper.Ui.Web
                 });
             }
         }
+
+        public class EventHandlerRegistry : Registry
+        {
+            public EventHandlerRegistry()
+            {
+                Scan(s =>
+                {
+                    s.Assembly("Columbo.Minesweeper.Application");
+                    s.ConnectImplementationsToTypesClosing(typeof(IDomainEventHandler<>));
+                });
+            }
+        }
         
         public class DomainRegistry : Registry
         {
@@ -56,12 +72,15 @@ namespace Columbo.Minesweeper.Ui.Web
                 For<IGridFactory>().Use<GridFactory>();
                 For<ITileFactory>().Use<TileFactory>();
                 For<IGameTypeMapper>().Use<GameTypeMapper>();
-
-                For<ITilePicker>().Use<RandomTilePicker>();
+                For<IMineClearer>().Use<MineClearer>();
+                For<ICoordinatePicker>().Use<RandomCoordinatePicker>();
 
                 For<IGameRepository>().Use<GameRepository>();
 
                 For<ICommandHandlerRegistry>().Use<StructureMapCommandHandlerRegistry>();
+                For<IDomainEventHandlerFactory>().Use<StructureMapDomainEventHandlerFactory>();
+             
+                //ForRequestedType<IDomainEventHandler<OrderSubmittedEvent>>().AddConcreteType<OrderSubmittedHandler>();
             }
         }
     }

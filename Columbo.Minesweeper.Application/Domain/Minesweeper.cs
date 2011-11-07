@@ -1,4 +1,5 @@
 ﻿using System;
+using Columbo.Minesweeper.Application.Events;
 
 namespace Columbo.Minesweeper.Application.Domain
 {
@@ -16,8 +17,11 @@ namespace Columbo.Minesweeper.Application.Domain
 
         public Minesweeper(IMinefieldFactory minefield_factory, GameOptions game_options)
         {
-            _game_id = game_options.player_id;            
-            _minefield = minefield_factory.create_a_mindfield_with_these_options(game_options, this);            
+            _game_id = game_options.player_id;
+           
+            _minefield = minefield_factory.create_a_mindfield_with_these_options(game_options, this);
+
+            DomainEvents.raise(new MinesweeperGameStarted(_game_id, game_options.game_difficulty.minefield_size));
         }
 
         public Guid game_id 
@@ -44,8 +48,8 @@ namespace Columbo.Minesweeper.Application.Domain
 
         private void listen_for_minefield_events()
         {
-            _minefield.mine_exploded += new EventHandler(game_lost);
-            _minefield.minefield_cleared += new EventHandler(game_won);
+            _minefield.mine_exploded += game_lost;
+            _minefield.minefield_cleared += game_won;
         }
 
         private void game_lost(object sender, EventArgs e)
