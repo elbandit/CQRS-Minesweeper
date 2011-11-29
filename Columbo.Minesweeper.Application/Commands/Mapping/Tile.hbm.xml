@@ -5,8 +5,8 @@
 
   <class name="Tile" table="Minefields"  lazy="false" >
 
-	  <id name="_id" access="field" column="tile_id" type="int" unsaved-value="0">		  
-		  <generator class="identity"/>
+	  <id name="_tile_id" access="field" column="tile_id" type="Guid">
+      <generator class="assigned"/>
 	  </id>
 	  
 	<component access="field" class="Coordinate" name="_located_at" lazy="false">
@@ -18,10 +18,8 @@
     <property access="field" name="_number_of_mines_surrounding" column="Number_Of_Mines_Surrounding"/>
     <property access="field" name="_contains_mine" column="contains_mine"/>
 
-	<many-to-one access="field" name="_minesweeper"
-                 class="Minesweeper"
-                 column="game_id"
-                 not-null="true"/>
+    <property name="_game_id" access="field" column="game_id"/>
+	
 	  
   </class>
                          

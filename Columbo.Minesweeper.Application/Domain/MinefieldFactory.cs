@@ -18,10 +18,10 @@ namespace Columbo.Minesweeper.Application.Domain
             _mine_clearer = mine_clearer;
         }
 
-        public IMinefield create_a_mindfield_with_these_options(GameOptions game_options, IMinesweeper minesweeper)
+        public IMinefield create_a_mindfield_with_these_options(GameOptions game_options, Guid game_id)
         {                                   
             var grid = _grid_factory.create_grid_with_size_of(game_options.game_difficulty.minefield_size, 
-                                                                          minesweeper);
+                                                                          game_id);
 
             var mine_planter = _mine_planter_factory.create_for(game_options.game_difficulty);
 

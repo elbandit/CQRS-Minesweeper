@@ -7,6 +7,6 @@ namespace Columbo.Minesweeper.Application.Domain
 {
     public interface ITileFactory
     {
-        ITile create_for(Coordinate coordiante, IMinesweeper minesweeper, IGrid grid);
+        ITile create_for(Coordinate coordiante, Guid game_id);
     }
 }

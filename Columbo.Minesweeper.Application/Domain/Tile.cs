@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Columbo.Minesweeper.Application.Events;
 
 namespace Columbo.Minesweeper.Application.Domain
 {
     public class Tile : ITile 
     {
-        private int? _number_of_mines_surrounding;        
+        private int _number_of_mines_surrounding;        
         private bool _is_revealed = false;
         private bool _contains_mine = false;
-        private Coordinate _located_at;        
-        private int _id;
-        private IMinesweeper _minesweeper;
-        private readonly IGrid _grid;
+        private readonly Guid _tile_id;
+        private Coordinate _located_at;              
+        private Guid _game_id;
         public event TileClearedEventHandler tile_cleared;
         public event EventHandler mine_exploded;
 
@@ -24,19 +24,22 @@ namespace Columbo.Minesweeper.Application.Domain
 
         private Tile()
         {
-
         }
 
-        public Tile(Coordinate location, IMinesweeper minesweeper, IGrid grid)
+        public Tile(Guid tile_id, Coordinate location, Guid game_id)
         {
+            _tile_id = tile_id;
             _located_at = location;
-            _minesweeper = minesweeper;
-            _grid = grid;
+            _game_id = game_id;
+
+            DomainEvents.raise(new TileCreated(_tile_id, _game_id, _located_at));
         }
 
         public void reveal()
         {
-            _is_revealed = true;                         
+            _is_revealed = true;
+
+            DomainEvents.raise(new TileRevealed(_tile_id, contains_mine(), _number_of_mines_surrounding));            
         }
 
         public bool contains_mine()
@@ -74,11 +77,6 @@ namespace Columbo.Minesweeper.Application.Domain
                                 _number_of_mines_surrounding++;
                          }
                  }
-        }
-
-        private bool have_not_checked_for_number_of_surrounding_mines()
-        {
-            return _number_of_mines_surrounding == null;
         }
 
         public bool is_at(Coordinate coordinate)

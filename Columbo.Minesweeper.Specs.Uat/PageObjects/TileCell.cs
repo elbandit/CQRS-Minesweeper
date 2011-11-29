@@ -24,17 +24,17 @@ namespace Columbo.Minesweeper.Specs.Uat.PageObjects
         
         public static TileCell s_convert_to_tile(IWebElement cell)
         {
-            var is_empty = cell.FindElement(By.TagName("img")).GetAttribute("src").Contains("EmptyTile");
+            var is_empty = cell.FindElement(By.TagName("img")).GetAttribute("src").Contains("revealed_surrounded_by");
             var number_of_mines_surrounding_by = 0;
 
             if (is_empty)
             {
-                var position_of_number_of_mines_surrounding = cell.FindElement(By.TagName("img")).GetAttribute("src").ToString().IndexOf("EmptyTile_near_");
+                var position_of_number_of_mines_surrounding = cell.FindElement(By.TagName("img")).GetAttribute("src").ToString().IndexOf("revealed_surrounded_by_");
 
-                number_of_mines_surrounding_by = int.Parse(cell.FindElement(By.TagName("img")).GetAttribute("src").ToString().Substring(position_of_number_of_mines_surrounding + 15, 1));
+                number_of_mines_surrounding_by = int.Parse(cell.FindElement(By.TagName("img")).GetAttribute("src").ToString().Substring(position_of_number_of_mines_surrounding + 23, 1));
             }                
 
-            var is_unrevealed = cell.FindElement(By.TagName("img")).GetAttribute("src").Contains("UnrevealedTile");
+            var is_unrevealed = cell.FindElement(By.TagName("img")).GetAttribute("src").Contains("not_revealed");
             
           
             var coordinates = cell.FindElement(By.TagName("img")).GetAttribute("id").Split('_');            

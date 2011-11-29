@@ -21,7 +21,7 @@ namespace Columbo.Minesweeper.Specs.Core.Domain_Specs
                 minesweeper = An<IMinesweeper>();
                 tile = An<ITile>();
 
-                tile_factory.WhenToldTo(x => x.create_for(Arg<Coordinate>.Is.Anything, Arg<IMinesweeper>.Is.Anything, Arg<IGrid>.Is.Anything))
+                tile_factory.WhenToldTo(x => x.create_for(Arg<Coordinate>.Is.Anything, Arg<Guid>.Is.Anything))
                             .Return(tile);
 
                 number_of_rows = 3;
@@ -29,7 +29,7 @@ namespace Columbo.Minesweeper.Specs.Core.Domain_Specs
                 minefield_size = new MinefieldSize(3, 3);
 
 
-                Subject = new Grid(tile_factory, minefield_size, minesweeper);
+                Subject = new Grid(tile_factory, minefield_size, Guid.NewGuid());
             };
 
             private Because of = () => Subject.contains_unrevealed_tiles_with_no_mines();
@@ -73,7 +73,7 @@ namespace Columbo.Minesweeper.Specs.Core.Domain_Specs
                 minefield_size = new MinefieldSize(3, 3);
             };
 
-            private Because of = () => Subject = new Grid(tile_factory, minefield_size, minesweeper);
+            private Because of = () => Subject = new Grid(tile_factory, minefield_size, Guid.NewGuid());
 
             private It should_tell_the_tile_factory_to_create_a_tile_for_each_coordinate = () =>
             {
@@ -83,7 +83,7 @@ namespace Columbo.Minesweeper.Specs.Core.Domain_Specs
                     var column_count = 0;
                     while (column_count < number_of_columns)
                     {
-                        tile_factory.WasToldTo(x => x.create_for(Arg<Coordinate>.Matches(c => c.Equals(new Coordinate(row_count, column_count))), Arg<IMinesweeper>.Is.Anything, Arg<IGrid>.Is.Anything));
+                        tile_factory.WasToldTo(x => x.create_for(Arg<Coordinate>.Matches(c => c.Equals(new Coordinate(row_count, column_count))), Arg<Guid>.Is.Anything));
 
                         column_count++;
                     }

@@ -3,10 +3,10 @@
     namespace="Columbo.Minesweeper.Application.Queries.Views"
         assembly="Columbo.Minesweeper.Application">
 
-  <class name="TileView" table="MinefieldViews" mutable="false" lazy="false" >
+  <class name="TileView" table="MinefieldViews" lazy="false" >
 
-    <id name="tile_id" column="tile_id" type="int" unsaved-value="0">
-      <generator class="identity"/>
+    <id name="tile_id" column="tile_id" type="Guid">
+      <generator class="assigned"/>
     </id>
 
     <property name="game_id" column="game_id"/>

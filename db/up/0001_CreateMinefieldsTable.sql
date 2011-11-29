@@ -9,7 +9,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE TABLE [dbo].[Minefields](
-	[Tile_Id] [int] IDENTITY(1,1) NOT NULL,
+	[Tile_Id] [uniqueidentifier] NOT NULL,
 	[Is_Revealed] [bit] NOT NULL,
 	[Contains_Mine] [bit] NOT NULL,
 	[Number_Of_Mines_Surrounding] [int] NULL,

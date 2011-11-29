@@ -26,7 +26,7 @@ namespace Columbo.Minesweeper.Application.Domain
         public void reveal_tile_at(Coordinate coordinate)
         {                               
             _grid.reveal_tile_at(coordinate);
-
+          
             if (_grid.mine_on_tile_at(coordinate))
                 mine_exploded(this, new EventArgs());
             else

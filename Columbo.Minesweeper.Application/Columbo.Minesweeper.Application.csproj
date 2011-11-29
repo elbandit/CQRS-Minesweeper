@@ -101,10 +101,20 @@
     <Compile Include="Domain\Tile.cs" />
     <Compile Include="Domain\TileClearedEventArgs.cs" />
     <Compile Include="Domain\TileFactory.cs" />
+    <Compile Include="Events\MinesweeperGameFinishedHandler.cs" />
     <Compile Include="Events\DomainEvents.cs" />
     <Compile Include="Events\IDomainEvent.cs" />
     <Compile Include="Events\IDomainEventHandler.cs" />
     <Compile Include="Events\IDomainEventHandlerFactory.cs" />
+    <Compile Include="Events\MinesweeperGameFinished.cs" />
+    <Compile Include="Events\MinesweeperGameLost.cs" />
+    <Compile Include="Events\MinesweeperGameLostHandler.cs" />
+    <Compile Include="Events\MinesweeperGameWon.cs" />
+    <Compile Include="Events\MinesweeperGameWonHandler.cs" />
+    <Compile Include="Events\TileCreated.cs" />
+    <Compile Include="Events\TileCreatedHandler.cs" />
+    <Compile Include="Events\TileRevealed.cs" />
+    <Compile Include="Events\TileRevealedHandler.cs" />
     <Compile Include="Queries\Views\MinefieldView.cs" />
     <Compile Include="Events\MinesweeperGameStarted.cs" />
     <Compile Include="Events\MinesweeperGameStartedHandler.cs" />
@@ -134,7 +144,9 @@
     <EmbeddedResource Include="Commands\Mapping\Tile.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Queries\Mappings\MinefieldView.hbm.xml" />
+    <EmbeddedResource Include="Queries\Mappings\MinefieldView.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Queries\Mappings\TileView.hbm.xml">

@@ -18,10 +18,10 @@ namespace Columbo.Minesweeper.Application.Domain
         public Minesweeper(IMinefieldFactory minefield_factory, GameOptions game_options)
         {
             _game_id = game_options.player_id;
-           
-            _minefield = minefield_factory.create_a_mindfield_with_these_options(game_options, this);
 
-            DomainEvents.raise(new MinesweeperGameStarted(_game_id, game_options.game_difficulty.minefield_size));
+            DomainEvents.raise(new MinesweeperGameStarted(_game_id));
+           
+            _minefield = minefield_factory.create_a_mindfield_with_these_options(game_options, _game_id);            
         }
 
         public Guid game_id 
@@ -55,11 +55,15 @@ namespace Columbo.Minesweeper.Application.Domain
         private void game_lost(object sender, EventArgs e)
         {
             _game_ended_in_a_loss = true;
+
+            DomainEvents.raise(new MinesweeperGameLost(_game_id));
         }
 
         void game_won(object sender, EventArgs e)
         {
             _game_ended_in_a_win = true;
+
+            DomainEvents.raise(new MinesweeperGameWon(_game_id));
         }
     }
 }

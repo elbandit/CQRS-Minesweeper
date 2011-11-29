@@ -6,21 +6,21 @@ using NHibernate.Linq;
 
 namespace Columbo.Minesweeper.Application.Events
 {
-    public class MinesweeperGameStartedHandler : IDomainEventHandler<MinesweeperGameStarted>
+    public class MinesweeperGameFinishedHandler : IDomainEventHandler<MinesweeperGameFinished>
     {
-        public void handle(MinesweeperGameStarted domain_event)
-        {
-            var game = new MinefieldView() { game_id = domain_event.game_id, game_lost = false, game_won = false };
-
+        public void handle(MinesweeperGameFinished domain_event)
+        {              
             using (var session = SessionFactory.GetNewSession())
             {
                 using (var trans = session.BeginTransaction())
                 {
-                    session.Save(game);
+                    var game = session.Get<MinefieldView>(domain_event.game_id);
+
+                    session.Delete(game);
 
                     trans.Commit();
                 }
-            }             
+            } 
         }
     }
 }

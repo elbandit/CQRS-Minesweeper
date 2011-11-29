@@ -2,9 +2,9 @@
 
 namespace Columbo.Minesweeper.Application.Events
 {
-    public class MinesweeperGameStarted : IDomainEvent
-    {       
-        public MinesweeperGameStarted(Guid game_id)
+    public class MinesweeperGameLost : IDomainEvent
+    {
+        public MinesweeperGameLost(Guid game_id)
         {
             this.game_id = game_id;
         }

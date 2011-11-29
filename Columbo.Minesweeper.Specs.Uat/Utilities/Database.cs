@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -17,7 +14,9 @@ namespace Columbo.Minesweeper.Specs.Uat.Utilities
                 {
                     conn.Open();
                     cmd.CommandText = "delete Minefields;" +
-                                      "delete Games;";                                  
+                                      "delete Games;" + 
+                                      "DELETE MinefieldViews; " +
+                                      "DELETE GameViews;";                                  
                     cmd.CommandType = CommandType.Text;
                     cmd.ExecuteNonQuery();
                 }

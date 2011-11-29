@@ -11,66 +11,8 @@
     <script src="/Scripts/jquery-1.6.1.js" type="text/javascript"></script>    
     <script src="/Scripts/jquery.tmpl.js" type="text/javascript"></script>    
     <script src="/Scripts/knockout-1.2.1.js" type="text/javascript"></script>
+    <script src="/Scripts/GameViewModel.js" type="text/javascript"></script>
 </head>
-
-<script type="text/javascript">
-
-    function row(tiles) {
-        this.tiles = ko.observable(tiles);                
-    }
-
-    function tile(row, column, has_been_revealed, tile_image, ownerViewModel) {
-        this.row = ko.observable(row);
-        this.column = ko.observable(column);
-        this.has_been_revealed = has_been_revealed;
-        this.tile_image = tile_image;
-
-
-        this.reveal = function () {
-            if (this.has_been_revealed != true)
-                ownerViewModel.reveal(this);    
-        };
-        this.ownerViewModel = ownerViewModel;
-    }
-
-    
-    // Overall viewmodel for this screen, along with initial state
-    function taskListViewModel() {
-
-        var self = this;
-
-        this.rows = ko.observableArray([]);
-        this.game_won = ko.observable();
-        this.game_lost = ko.observable();
-      
-        this.reveal = function (tile) {
-         
-            $.post("Game/AjaxReveal", { col: tile.column, row: tile.row }, function (data) {
-
-                self.update_mines();
-            });
-        };
-
-        this.update_mines = function () {
-            $.get("Game/Ajax", function (data) {
-
-                var rows = $.map(data.tile_grid, function (item) {
-                    return new row($.map(item, function (tiles) {
-                        return new tile(tiles.row, tiles.column, tiles.has_been_revealed, tiles.tile_image, self)
-                    }))
-                })
-
-                self.game_won(data.game_won);
-                self.game_lost(data.game_lost);
-
-                self.rows(rows)
-            });
-        };
-
-        // Load initial state from server
-        self.update_mines();
-    }; 
-</script>
 <body>
     
     <div id="win-message" data-bind="visible: game_won">
@@ -81,7 +23,7 @@
         You have lost!
     </div>
 
-    <div id="start-new-game" data-bind="visible: game_won || game_lost">
+    <div id="start-new-game" data-bind="visible: game_has_finished">
          @using (Html.BeginForm("FinishGame", "Game"))
             {                
                 <input id="btnStartNewGame" type="submit" value="Start New Game" />        
@@ -90,16 +32,16 @@
     </div>    
 
     <table id="minefield">    
-        <tbody data-bind="template: 'reservationTemplate'"></tbody>
+        <tbody data-bind="template: 'gridTemplate'"></tbody>
     </table>
 
-    <script type="text/x-jquery-tmpl" id="reservationTemplate">
+    <script type="text/x-jquery-tmpl" id="gridTemplate">
         {{each rows}}
-            <tr data-bind="template: { name: 'childrenTemplate', foreach: tiles }"></tr>                 
+            <tr data-bind="template: { name: 'rowTemplate', foreach: tiles }"></tr>                 
         {{/each}}
     </script>
 
-    <script type="text/html" id="childrenTemplate">                                
+    <script type="text/html" id="rowTemplate">                                
         <td>
             <img id="${row}_${column}" data-bind="click: reveal" border="0" id="EmptyTile" src="/Images/${tile_image}.gif")" />              
         </td>                

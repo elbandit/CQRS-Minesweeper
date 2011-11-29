@@ -7,9 +7,9 @@ namespace Columbo.Minesweeper.Application.Domain
 {
     public class TileFactory : ITileFactory
     {
-        public ITile create_for(Coordinate coordiante, IMinesweeper minesweeper, IGrid grid)
+        public ITile create_for(Coordinate coordiante, Guid game_id)
         {
-            return new Tile(coordiante, minesweeper, grid);
+            return new Tile(Guid.NewGuid(), coordiante, game_id);
         }
     }
 }

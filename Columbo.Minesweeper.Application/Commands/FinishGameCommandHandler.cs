@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Columbo.Minesweeper.Application.Commands.Infrastructure;
+using Columbo.Minesweeper.Application.Events;
 
 namespace Columbo.Minesweeper.Application.Commands
 {
@@ -20,7 +21,11 @@ namespace Columbo.Minesweeper.Application.Commands
             var game = _game_repository.get_by(command.player_id);
 
             if (game != null)
+            {
                 _game_repository.delete(game);
+
+                DomainEvents.raise(new MinesweeperGameFinished(command.player_id));
+            }
         }
     }
 }

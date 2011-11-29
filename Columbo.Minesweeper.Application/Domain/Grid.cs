@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
+using Columbo.Minesweeper.Application.Events;
 
 namespace Columbo.Minesweeper.Application.Domain
 {
@@ -14,12 +15,12 @@ namespace Columbo.Minesweeper.Application.Domain
 
         }
 
-        public Grid(ITileFactory tile_factory, MinefieldSize minefield_size, IMinesweeper minesweeper)
+        public Grid(ITileFactory tile_factory, MinefieldSize minefield_size, Guid game_id)
         {
-            create_grid(minefield_size, tile_factory, minesweeper);
+            create_grid(minefield_size, tile_factory, game_id);
         }
 
-        private void create_grid(MinefieldSize minefield_size, ITileFactory tile_factory, IMinesweeper minesweeper)
+        private void create_grid(MinefieldSize minefield_size, ITileFactory tile_factory, Guid game_id)
         {
             _tiles = new List<ITile>();
 
@@ -29,7 +30,7 @@ namespace Columbo.Minesweeper.Application.Domain
                 var column_count = 0;
                 while (column_count < minefield_size.columns)
                 {
-                    _tiles.Add(tile_factory.create_for(new Coordinate(row_count, column_count), minesweeper, this));
+                    _tiles.Add(tile_factory.create_for(new Coordinate(row_count, column_count),game_id));
                     column_count++;
                 }
                 row_count++;
@@ -43,7 +44,7 @@ namespace Columbo.Minesweeper.Application.Domain
 
         public void reveal_tile_at(Coordinate coordinate)
         {
-            tile_at(coordinate).reveal();
+            tile_at(coordinate).reveal();            
         }
 
         public bool contains_tile_at(Coordinate coordinate)

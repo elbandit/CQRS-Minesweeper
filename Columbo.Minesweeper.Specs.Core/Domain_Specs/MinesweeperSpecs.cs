@@ -30,14 +30,14 @@ namespace Columbo.Minesweeper.Specs.Core.Domain_Specs
 
                 minefield_factory = An<IMinefieldFactory>();                
 
-                minefield_factory.WhenToldTo(x => x.create_a_mindfield_with_these_options(game_options, Subject)).Return(minefield);
+                minefield_factory.WhenToldTo(x => x.create_a_mindfield_with_these_options(game_options, player_id)).Return(minefield);
             };
 
             private Because of = () => Subject = new Application.Domain.Minesweeper(minefield_factory, game_options);
 
             private It should_create_a_new_mine_field = () =>
             {
-                minefield_factory.WasToldTo(x => x.create_a_mindfield_with_these_options(game_options, Subject));
+                minefield_factory.WasToldTo(x => x.create_a_mindfield_with_these_options(game_options, player_id));
             };
             
             private static int grid_size;
@@ -63,7 +63,7 @@ namespace Columbo.Minesweeper.Specs.Core.Domain_Specs
 
                 var game_options = new GameOptions(game_difficulty, Guid.NewGuid());
                 
-                minefield_factory.WhenToldTo(x => x.create_a_mindfield_with_these_options(Arg<GameOptions>.Is.Anything, Arg<IMinesweeper>.Is.Anything)).Return(minefield);
+                minefield_factory.WhenToldTo(x => x.create_a_mindfield_with_these_options(Arg<GameOptions>.Is.Anything, Arg<Guid>.Is.Anything)).Return(minefield);
 
                 Subject = new Application.Domain.Minesweeper(minefield_factory, game_options);
             };
@@ -89,7 +89,7 @@ namespace Columbo.Minesweeper.Specs.Core.Domain_Specs
                 minefield_factory = An<IMinefieldFactory>();
                 minefield = An<IMinefield>();
 
-                minefield_factory.WhenToldTo(x => x.create_a_mindfield_with_these_options(Arg<GameOptions>.Is.Anything, Arg<IMinesweeper>.Is.Anything)).Return(minefield);
+                minefield_factory.WhenToldTo(x => x.create_a_mindfield_with_these_options(Arg<GameOptions>.Is.Anything, Arg<Guid>.Is.Anything)).Return(minefield);
 
                 coordinate = new Coordinate(1,1);
 
@@ -127,7 +127,7 @@ namespace Columbo.Minesweeper.Specs.Core.Domain_Specs
                 minefield_factory = An<IMinefieldFactory>();
                 minefield = An<IMinefield>();
 
-                minefield_factory.WhenToldTo(x => x.create_a_mindfield_with_these_options(Arg<GameOptions>.Is.Anything, Arg<IMinesweeper>.Is.Anything)).Return(minefield);
+                minefield_factory.WhenToldTo(x => x.create_a_mindfield_with_these_options(Arg<GameOptions>.Is.Anything, Arg<Guid>.Is.Anything)).Return(minefield);
 
                 coordinate = new Coordinate(1, 1);
 

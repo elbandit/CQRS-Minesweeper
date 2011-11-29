@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace Columbo.Minesweeper.Application.Events
 {
-    public class MinesweeperGameStarted : IDomainEvent
-    {       
-        public MinesweeperGameStarted(Guid game_id)
+    public class MinesweeperGameWon : IDomainEvent 
+    {
+        public MinesweeperGameWon(Guid game_id)
         {
             this.game_id = game_id;
         }

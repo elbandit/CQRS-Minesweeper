@@ -15,9 +15,6 @@
     
 
     <component access="field" class="Minefield" name="_minefield" lazy="false">
-
-      <component class="MineClearer" name="MineClearer" lazy="false">
-      </component>
       
 		  <component access="field" class="Grid" name="_grid" lazy="false">
 			  

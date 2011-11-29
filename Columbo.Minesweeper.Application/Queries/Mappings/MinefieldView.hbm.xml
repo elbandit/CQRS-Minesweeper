@@ -3,7 +3,7 @@
     namespace="Columbo.Minesweeper.Application.Queries.Views"
         assembly="Columbo.Minesweeper.Application">
 
-  <class name="MinefieldView" table="GameViews" mutable="false" lazy="false" >
+  <class name="MinefieldView" table="GameViews" lazy="false" >
 
     <id name="game_id" column="game_id" type="Guid">
       <generator class="assigned"/>
